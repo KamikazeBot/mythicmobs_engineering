@@ -1,0 +1,10 @@
+RandomDwarfSpawns1:
+  MobType: dwa
+  Worlds: world
+  Chance: 0.005
+  Priority: 2
+  Action: replace
+  Conditions:
+  - inblock air
+  - outside false
+  - height 0-20

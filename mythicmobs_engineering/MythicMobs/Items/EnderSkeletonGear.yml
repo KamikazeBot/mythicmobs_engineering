@@ -1,0 +1,57 @@
+######################################################
+# Clearnames:
+endskebow:
+  Id: 261
+  Enchantments:
+  - ARROW_DAMAGE:3
+  - ARROW_FIRE:1
+  Options:
+    MovementSpeed: 0.05
+mendskebow:
+  Id: 261
+  Enchantments:
+  - ARROW_DAMAGE:3
+######################################################
+# Drops:
+endskebowDrop:
+  Id: 261
+  Display: '&5&oEnder Skeletons Bow'
+  Enchantments:
+  - ARROW_DAMAGE:3
+  - ARROW_FIRE:1
+  Options:
+    MovementSpeed: 0.05
+mendskebowDrop:
+  Id: 261
+  Display: '&d&oMinor Ender Skeletons Bow'
+  Enchantments:
+  - ARROW_DAMAGE:3
+witherskull:
+  Id: 397
+  Data: 1
+######################################################
+# Armor
+EndSke1H:
+  Id: 298
+  Display: '###'
+  Options:
+    Color: 0,0,0
+    Unbreakable: true
+EndSke1C:
+  Id: 299
+  Display: '###'
+  Options:
+    Color: 0,0,0
+    Unbreakable: true
+EndSke1L:
+  Id: 300
+  Display: '###'
+  Options:
+    Color: 0,0,0
+    Unbreakable: true
+EndSke1F:
+  Id: 301
+  Display: '###'
+  Options:
+    Color: 0,0,0
+    Unbreakable: true

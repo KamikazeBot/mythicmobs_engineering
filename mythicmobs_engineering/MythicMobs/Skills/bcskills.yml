@@ -1,0 +1,18 @@
+bouncycastle1:
+#  Conditions:
+#  - playerwithin 12
+  Skills:
+#  - effect:particles{particle=blockcrack_81;amount=200;vSpread=1;hSpread=1;Speed=0;yoffset=1.5} @PlayersInRadius{r=15}
+  - effect:particles{particle=snowshovel;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=0} @PlayersInRadius{r=15}
+  - effect:sound{sound=mob.guardian.curse;p=2} @PlayersInRadius{r=15}
+  - effect:sound{sound=mob.zombie.unfect;p=2} @PlayersInRadius{r=15}
+  - throw{v=1;vy=24} @PlayersInRadius{r=15}
+  - potion{type=DAMAGE_RESISTANCE;d=60;l=5} @PlayersInRadius{r=15}
+particlebox:
+  Skills:
+  - command{cmd="execute @e[type=Cow] ~ ~ ~ particle depthsuspend ~3.5 ~ ~ 0 1.8 1.8 2 100"} @self
+  - command{cmd="execute @e[type=Cow] ~ ~ ~ particle depthsuspend ~-3.5 ~ ~ 0 1.8 1.8 2 100"} @self
+  - command{cmd="execute @e[type=Cow] ~ ~ ~ particle depthsuspend ~ ~ ~3.5 1.8 1.8 0 2 100"} @self
+  - command{cmd="execute @e[type=Cow] ~ ~ ~ particle depthsuspend ~ ~ ~-3.5 1.8 1.8 0 2 100"} @self
+  - command{cmd="execute @e[type=Cow] ~ ~ ~ particle depthsuspend ~ ~3.5 ~ 1.8 0 1.8 2 100"} @self
+  - command{cmd="execute @e[type=Cow] ~ ~ ~ particle depthsuspend ~ ~-3.5 ~ 1.8 0 1.8 2 100"} @self

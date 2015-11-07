@@ -1,0 +1,8 @@
+RandomMinorEnderSkeleton:
+  MobType: mendske
+  Worlds: world
+  Chance: 0.017
+  Priority: 1
+  Action: replace
+  Conditions:
+  - outside true

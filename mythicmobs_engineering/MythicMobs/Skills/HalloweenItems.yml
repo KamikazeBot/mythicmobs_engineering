@@ -1,0 +1,113 @@
+jackolantern:
+  Id: 91
+pumpkin:
+  Id: 86
+dandelion:
+  Id: 37
+###
+hwmlvl0:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 0'
+hwmlvl1:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 1'
+  Options:
+    Health: 5
+    KnockbackResistance: 0.025
+    MovementSpeed: 0.02
+hwmlvl2:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 2'
+  Options:
+    Health: 10
+    KnockbackResistance: 0.050
+    MovementSpeed: 0.04
+hwmlvl3:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 3'
+  Options:
+    Health: 15
+    KnockbackResistance: 0.075
+    MovementSpeed: 0.06
+hwmlvl4:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 4'
+  Options:
+    Health: 20
+    KnockbackResistance: 0.1
+    MovementSpeed: 0.08
+hwmlvl5:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 5'
+  Options:
+    Health: 25
+    KnockbackResistance: 0.125
+    MovementSpeed: 0.1
+hwmlvl6:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 6'
+  Options:
+    Health: 30
+    KnockbackResistance: 0.150
+    MovementSpeed: 0.12
+hwmlvl7:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 7'
+  Options:
+    Health: 35
+    KnockbackResistance: 0.175
+    MovementSpeed: 0.14
+hwmlvl8:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 8'
+  Options:
+    Health: 40
+    KnockbackResistance: 0.2
+    MovementSpeed: 0.16
+hwmlvl9:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 9'
+  Options:
+    Health: 45
+    KnockbackResistance: 0.225
+    MovementSpeed: 0.18
+hwmlvl10:
+  Id: 91
+  Display: '&6Pumpkin Soul'
+  Lore:
+  - ''
+  - '&7Level 10'
+  Options:
+    Health: 50
+    KnockbackResistance: 0.25
+    MovementSpeed: 0.2

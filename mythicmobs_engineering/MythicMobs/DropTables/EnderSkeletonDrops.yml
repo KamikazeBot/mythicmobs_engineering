@@ -1,0 +1,16 @@
+###############################################
+# Ender Skeleton
+endskeDrops:
+  Drops:
+  - witherskull 1 1
+  - endskebowDrop 1 0.01
+  - 368 0-7 1
+  - exp 250
+###############################################
+# Minor Ender Skeleton
+mendskeDrops:
+  Drops:
+  - mendskebowDrop 1 0.5
+  - 368 0-4 1
+  - exp 100
+###############################################

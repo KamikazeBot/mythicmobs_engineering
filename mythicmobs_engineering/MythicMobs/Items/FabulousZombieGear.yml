@@ -1,0 +1,62 @@
+PinkH:
+  Id: 298
+  Display: 'Fabulous Headgear'
+  Options:
+    Color: 200,100,200
+    Health: 7.5
+  Enchantments:
+  - DURABILITY:2
+PinkC:
+  Id: 299
+  Display: 'Fabulous T-Shirt'
+  Options:
+    Color: 200,100,200
+    Health: 7.5
+  Enchantments:
+  - DURABILITY:2
+PinkL:
+  Id: 300
+  Display: 'Fabulous Yoga Pants'
+  Options:
+    Color: 200,100,200
+    Health: 7.5
+  Enchantments:
+  - DURABILITY:2
+PinkF:
+  Id: 301
+  Display: 'Fabulous Ballerinas'
+  Options:
+    Color: 200,100,200
+    Health: 2.5
+    MovementSpeed: 0.1
+  Enchantments:
+  - DURABILITY:2
+PinkH2:
+  Id: 298
+  Display: 'Fabulous Headgear'
+  Options:
+    Color: 200,100,200
+    Health: 7.5
+    Unbreakable: true
+PinkC2:
+  Id: 299
+  Display: 'Fabulous T-Shirt'
+  Options:
+    Color: 200,100,200
+    Health: 7.5
+    Unbreakable: true
+PinkL2:
+  Id: 300
+  Display: 'Fabulous Yoga Pants'
+  Options:
+    Color: 200,100,200
+    Health: 7.5
+    Unbreakable: true
+PinkF2:
+  Id: 301
+  Display: 'Fabulous Ballerinas'
+  Options:
+    Color: 200,100,200
+    Health: 2.5
+    MovementSpeed: 0.1
+    Unbreakable: true

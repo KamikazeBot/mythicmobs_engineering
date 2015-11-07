@@ -1,0 +1,16 @@
+# random leap during combat
+fabpull:
+  Cooldown: 15
+  Conditions:
+  - playerwithin 6
+  - playernotwithin 2
+  Skills:
+  - effect:particles{particle=heart;amount=20;vSpread=0.5;hSpread=0.6;Speed=0;yoffset=1} @self
+  - pull{v=10} @PlayersInRadius{radius=7}
+  - effect:sound{sound=mob.villager.idle;p=3} @selflocation
+  - effect:sound{sound=mob.villager.yes;p=3} @selflocation
+# spawn minions
+fabminions:
+  Cooldown: 6 
+  Skills:
+  - summon{type=gz1m;amount=1;radius=8} @self

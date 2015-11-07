@@ -1,0 +1,669 @@
+################################################################################
+### REPOSITORY:
+#  - command{c="entitydata <mob.uuid> <&lc>CustomName<&co>&6untamed Pumpkin<&rc>"} @self
+#  - command{c="entitydata <mob.uuid> <&lc>CustomName<&co>&7<trigger.name>'s <mob.name>Pumpkin<&rc>"} @self
+#  - command{c="entitydata <mob.uuid> <&lc>CustomName<&co>&7<trigger.name><mob.name><&rc>"} @self
+#  - command{c="entitydata <mob.uuid> <&lc>CustomName<&co>&7<trigger.name>'s &6Pumpkin<&rc>"} @self
+#  - command{c="entitydata <mob.uuid> <&lc>CanPickUpLoot<&co>1b<&rc>"} @self
+################################################################################
+hwm_initiation: ### Initial disguise and equipment
+  Skills:
+  - disguise{d=babyzombie}
+  - skill{s=hwm_initiation_stance}
+  - command{c="entitydata <mob.uuid> <&lc>CanPickUpLoot<&co>1b<&rc>"}
+hwm_initiation_stance:
+  Skills:
+  - skill{s=hwm_initiation_stance_0}
+  - skill{s=hwm_initiation_stance_1}
+  - skill{s=hwm_initiation_stance_2}
+  - skill{s=hwm_initiation_stance_3}
+  - skill{s=hwm_initiation_stance_4}
+  - skill{s=hwm_initiation_stance_5}
+  - skill{s=hwm_initiation_stance_6}
+  - skill{s=hwm_initiation_stance_7}
+  - skill{s=hwm_initiation_stance_8}
+  - skill{s=hwm_initiation_stance_9}
+  - skill{s=hwm_initiation_stance_10}
+  - skill{s=hwm_initiation_stance_untamed}
+hwm_initiation_stance_0:
+  Conditions:
+  - holding feather
+  Skills:
+  - setstance{stance=Zero}
+hwm_initiation_stance_1:
+  Conditions:
+  - holding arrow
+  Skills:
+  - setstance{stance=One_Ignite}
+hwm_initiation_stance_2:
+  Conditions:
+  - holding stick
+  Skills:
+  - setstance{stance=Two}
+hwm_initiation_stance_3:
+  Conditions:
+  - holding wooden_shovel 269
+  Skills:
+  - setstance{stance=Three}
+hwm_initiation_stance_4:
+  Conditions:
+  - holding wooden_axe
+  Skills:
+  - setstance{stance=Four}
+hwm_initiation_stance_5:
+  Conditions:
+  - holding wooden_sword
+  Skills:
+  - setstance{stance=Five}
+hwm_initiation_stance_6:
+  Conditions:
+  - holding wooden_hoe
+  Skills:
+  - setstance{stance=Six}
+hwm_initiation_stance_7:
+  Conditions:
+  - holding bone
+  Skills:
+  - setstance{stance=Seven}
+hwm_initiation_stance_8:
+  Conditions:
+  - holding blaze_rod
+  Skills:
+  - setstance{stance=Eight}
+hwm_initiation_stance_9:
+  Conditions:
+  - holding golden_sword
+  Skills:
+  - setstance{stance=Nine_Ignite_Forcefield}
+hwm_initiation_stance_10:
+  Conditions:
+  - holding golden_hoe
+  Skills:
+  - setstance{stance=Ten_Ignite_Forcefield_Annihilate}
+hwm_initiation_stance_untamed:
+  Conditions:
+  - stance default
+  Skills:
+  - setstance{stance=Untamed}
+hwm_redisguise: ### Emergency re-disguise method
+  Cooldown: 6000
+  Conditions:
+  - onblock GLOWSTONE
+  Skills:
+  - disguise{d=babyzombie}
+  - effect:sound{s=random.fizz} @selflocation
+hwm_taming: ### Taming
+  Cooldown: 60
+  Conditions:
+  - stance Untamed
+  Skills:
+  - setstance{stance=Zero}
+  - equip{i=feather:0}
+  - command{c="entitydata <mob.uuid> <&lc>OwnerUUID<&co><trigger.uuid><&rc>"}
+  - effect:particles{p=heart;a=3;hS=0.2;vS=0.2;v=0;y=1}
+hwm_taming_nope_engine:
+  Skills:
+  - skill{s=hwm_taming_disabler}
+  - skill{s=hwm_taming_nope_fx}
+  - skill{s=hwm_taming_enabler}
+hwm_taming_disabler:
+  Conditions:
+  - incombat
+  - stance Untamed
+  Skills:
+  - setstance{stance=Nope}
+  - GCD{ticks=1200}
+hwm_taming_enabler:
+  Conditions:
+  - stance Nope
+  - offgcd true
+  Skills:
+  - setstance{stance=Untamed}
+hwm_taming_nope:
+  Cooldown: 2
+  Conditions:
+  - stance Nope
+  Skills:
+  - skill{s=hwm_taming_nope_sfx}
+  - effect:sound{s=mob.ghast.fireball;p=1} @selflocation
+  - damage{a=3;i=false} @PlayersInRadius{radius=3}
+  - ignite{t=5} @PlayersInRadius{radius=3}
+  - throw{v=5;vy=1} @PlayersInRadius{radius=3}
+  - GCD{ticks=600}
+  - delay 1
+  - effect:sound{s=mob.villager.no;p=0} @selflocation
+hwm_idle_vfx: ### FX
+  Skills:
+  - effect:particles{particle=smoke;amount=2;vSpread=0.05;hSpread=0.1;Speed=0;yoffset=1.2} 0.2
+  - effect:particles{particle=depthsuspend;amount=7;vSpread=0;hSpread=0.05;Speed=0.5;yoffset=0.1} 0.25
+hwm_health_vfx: 
+  Skills:
+  - effect:particles{particle=smoke;amount=2;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.1} =90%-80%
+  - effect:particles{particle=smoke;amount=4;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.1} =80%-70%
+  - effect:particles{particle=smoke;amount=8;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.1} =70%-60%
+  - effect:particles{particle=smoke;amount=16;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.1} =60%-50%
+  - effect:particles{particle=smoke;amount=32;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.1} =50%-40%
+  - effect:particles{particle=flame;amount=1;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.5} =50%-40%
+  - effect:particles{particle=smoke;amount=64;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.1} =40%-30%
+  - effect:particles{particle=flame;amount=2;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.5} =40%-30%
+  - effect:particles{particle=smoke;amount=128;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.1} =30%-20%
+  - effect:particles{particle=flame;amount=4;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.5} =30%-20%
+  - effect:particles{particle=smoke;amount=256;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.1} =20%-0%
+  - effect:particles{particle=flame;amount=8;vSpread=0.3;hSpread=0.1;Speed=0;yoffset=0.5} =20%-0%
+  - ignite{t=20} =20%-0%
+hwm_idle_sfx:
+  Skills:
+  - effect:sound{s=mob.villager.haggle;p=0} @selflocation
+  - effect:sound{s=mob.guardian.idle;v=0.1;p=2} @selflocation
+hwm_hit_sfx:
+  Skills:
+  - effect:sound{s=mob.villager.death;p=0.7} @selflocation
+  - effect:sound{s=fire.ignite;p=2} @selflocation
+hwm_attack_sfx:
+  Conditions:
+  - offgcd true
+  Skills:
+  - effect:sound{s=fire.ignite;p=0} @selflocation 0.85
+  - effect:sound{s=mob.villager.no;p=0} @selflocation 0.5
+hwm_levelup_fx:
+  Skills:
+  - effect:particles{particle=explode;amount=20;vSpread=0.3;hSpread=0.3;Speed=0.1;yoffset=1}
+  - effect:particles{particle=snowshovel;amount=20;vSpread=0.3;hSpread=0.3;Speed=0.1;yoffset=1}
+  - effect:particles{particle=mobSpell;amount=100;vSpread=0.1;hSpread=1.3;Speed=0.5;yoffset=0}
+  - effect:sound{s=random.explode;p=1.5} @selflocation
+  - effect:sound{s=random.orb;v=0.2;p=0} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=0.66} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=1} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=0.33} @selflocation 0.6
+  - delay 10
+  - effect:sound{s=random.orb;v=0.2;p=1.5} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=2} @selflocation 0.3
+  - delay 5
+  - effect:sound{s=random.orb;v=0.2;p=0.9} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=0.25} @selflocation 0.6
+hwm_taming_nope_fx:
+  Conditions:
+  - stance Nope
+  - playerwithin 7
+  Skills:
+  - effect:particles{p=angryVillager;a=1;hS=0.1;y=1} 0.1
+  - skill{s=hwm_taming_nope_sfx} 0.1
+hwm_taming_nope_sfx:
+  Conditions:
+  - stance Nope
+  - playerwithin 7
+  Skills:
+  - effect:sound{s=mob.wolf.growl;p=2} @selflocation
+  - effect:particles{p=angryVillager;a=1;hS=0.1;y=1}
+hwm_levelup: ### Level system
+  Skills:
+  - skill{s=hwm_level_1} 1
+  - skill{s=hwm_level_2} 1
+  - skill{s=hwm_level_3} 1
+  - skill{s=hwm_level_4} 1
+  - skill{s=hwm_level_5} 1
+  - skill{s=hwm_level_6} 1
+  - skill{s=hwm_level_7} 1
+  - skill{s=hwm_level_8} 1
+  - skill{s=hwm_level_9} 1
+  - skill{s=hwm_level_10} 1
+hwm_level_1:
+  Conditions:
+  - stance Zero
+  - offgcd true
+  Skills:
+  - setstance{stance=One_Ignite}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl1:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 1!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_2:
+  Conditions:
+  - stance One
+  - offgcd true
+  Skills:
+  - setstance{stance=Two_Ignite}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl2:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 2!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_3:
+  Conditions:
+  - stance Two
+  - offgcd true
+  Skills:
+  - setstance{stance=Three_Ignite}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl3:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 3!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_4:
+  Conditions:
+  - stance Three
+  - offgcd true
+  Skills:
+  - setstance{stance=Four_Ignite}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl4:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 4!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_5:
+  Conditions:
+  - stance Four
+  - offgcd true
+  Skills:
+  - setstance{stance=Five_Ignite}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl5:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="entitydata <mob.uuid> <&lc>CanPickUpLoot<&co>1b<&rc>"} @self
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 5!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_6:
+  Conditions:
+  - stance Five
+  - offgcd true
+  Skills:
+  - setstance{stance=Six_Ignite}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl6:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 6!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_7:
+  Conditions:
+  - stance Six
+  - offgcd true
+  Skills:
+  - setstance{stance=Seven_Ignite}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl7:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 7!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_8:
+  Conditions:
+  - stance Seven
+  - offgcd true
+  Skills:
+  - setstance{stance=Eight_Ignite}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl8:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 8!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_9:
+  Conditions:
+  - stance Eight
+  - offgcd true
+  Skills:
+  - setstance{stance=Nine_Ignite_Forcefield}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl9:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 9!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_10:
+  Conditions:
+  - stance Nine
+  - offgcd true
+  Skills:
+  - setstance{stance=Ten_Ignite_Forcefield_Annihilate}
+  - GCD{ticks=140}
+  - equip{i=hwmlvl10:4}
+  - potion{t=HEAL;d=1;l=0}
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &freached level 10!<&dq><&rc>"}
+  - skill{s=hwm_info}
+  - skill{s=hwm_levelup_fx}
+hwm_level_10_debug:
+  Cooldown: 10
+  Conditions:
+  - onblock PUMPKIN
+  Skills:
+  - setstance{stance=Nine}
+  - skill{s=hwm_level_10}
+hwm_info: ### Display owner, health and level
+  Cooldown: 1
+  Skills:
+  - skill{s=hwm_info_0}
+  - skill{s=hwm_info_1}
+  - skill{s=hwm_info_2}
+  - skill{s=hwm_info_3}
+  - skill{s=hwm_info_4}
+  - skill{s=hwm_info_5}
+  - skill{s=hwm_info_6}
+  - skill{s=hwm_info_7}
+  - skill{s=hwm_info_8}
+  - skill{s=hwm_info_9}
+  - skill{s=hwm_info_10}
+hwm_info_0:
+  Conditions:
+  - stance Zero
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 0<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 0<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 0<&dq><&rc>"} =20%-0%
+hwm_info_1:
+  Conditions:
+  - stance One
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 1<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 1<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 1<&dq><&rc>"}  =20%-0%
+hwm_info_2:
+  Conditions:
+  - stance Two
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 2<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 2<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 2<&dq><&rc>"} =20%-0%
+hwm_info_3:
+  Conditions:
+  - stance Three
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 3<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 3<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 3<&dq><&rc>"} =20%-0%
+hwm_info_4:
+  Conditions:
+  - stance Four
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 4<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 4<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 4<&dq><&rc>"} =20%-0%
+hwm_info_5:
+  Conditions:
+  - stance Five
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 5<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 5<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 5<&dq><&rc>"} =20%-0%
+hwm_info_6:
+  Conditions:
+  - stance Six
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 6<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 6<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 6<&dq><&rc>"} =20%-0%
+hwm_info_7:
+  Conditions:
+  - stance Seven
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 7<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 7<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 7<&dq><&rc>"} =20%-0%
+hwm_info_8:
+  Conditions:
+  - stance Eight
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 8<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 8<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 8<&dq><&rc>"} =20%-0%
+hwm_info_9:
+  Conditions:
+  - stance Nine
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 9<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 9<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 9<&dq><&rc>"} =20%-0%
+hwm_info_10:
+  Conditions:
+  - stance Ten
+  Skills:
+  - delay 2
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &2<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 10<&dq><&rc>"} =101%-50%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &6<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 10<&dq><&rc>"} =50%-20%
+  - command{c="tellraw @p <&lc>text<&co><&dq><target.name> &7~ &fHP<&co> &4<mob.hp>&7/&f<mob.mhp> &7~ &fLVL<&co> 10<&dq><&rc>"} =20%-0%
+hwm_flower: ### random flower
+  Cooldown: 30
+  Skills:
+  - effect:sound{s=dig.grass} @selflocation
+  - effect:particles{particle=blockcrack_02;amount=25;vSpread=0;hSpread=0.3;Speed=0;yoffset=0.1} 1
+  - equip{i=dandelion:0}
+  - effect:particles{particle=heart;amount=1;vSpread=0;hSpread=0;Speed=0;yoffset=1} 0.25
+  - delay 20
+  - jump{velocity=0.5}
+  - delay 40
+# change this to <trigger.name> on update
+  - command{cmd="give @p 37 1"}
+  - equip{i=Dummy:0}
+#################################################################################
+##### SKILL-CORE
+hwm_base_ignite: ### always ignites target <20% health (LEVEL 0 SKILL)
+  Cooldown: 1
+  Skills:
+  - ignite{t=60} @target
+hwm_random_ignite: ### Ignite Target (LEVEL 1 SKILL)
+  Cooldown: 3
+  Conditions:
+  - stance Ignite
+  Skills:
+  - ignite{t=60} @target
+hwm_slot4_engine: ### deny helmet replacement (LEVEL 5 SKILL)
+  Skills:
+  - skill{s=hwm_slot4_engine_5}
+  - skill{s=hwm_slot4_engine_6}
+  - skill{s=hwm_slot4_engine_7}
+  - skill{s=hwm_slot4_engine_8}
+  - skill{s=hwm_slot4_engine_9}
+  - skill{s=hwm_slot4_engine_10}
+hwm_slot4_engine_5:
+  Conditions:
+  - stance Five
+  Skills:
+  - equip{i=hwmlvl5:4}
+hwm_slot4_engine_6:
+  Conditions:
+  - stance Six
+  Skills:
+  - equip{i=hwmlvl6:4
+hwm_slot4_engine_7:
+  Conditions:
+  - stance Seven
+  Skills:
+  - equip{i=hwmlvl7:4}
+hwm_slot4_engine_8:
+  Conditions:
+  - stance Eight
+  Skills:
+  - equip{i=hwmlvl8:4}
+hwm_slot4_engine_9:
+  Conditions:
+  - stance Nine
+  Skills:
+  - equip{i=hwmlvl9:4}
+hwm_slot4_engine_10:
+  Conditions:
+  - stance Ten
+  Skills:
+  - equip{i=hwmlvl10:4}
+hwm_fullheal: ### Full heal (minimum level 5?)
+  Conditions:
+  - onblock JACK_O_LANTERN
+  Skills:
+  - potion{t=HEAL;d=1;l=100}
+  - effect:sound{s=mob.villager.yes;p=0} @selflocation
+  - effect:sound{s=mob.villager.yes;p=0.5} @selflocation
+  - command{c="execute <mob.uuid> ~ ~ ~ fill ~ ~-1 ~ ~ ~-1 ~ pumpkin 0 replace lit_pumpkin"}
+  - jump{v=0.5}
+hwm_ff_toggle_1_9: ### Protective forcefield (LEVEL 9 SKILL)
+  Cooldown: 3
+  Conditions:
+  - stance Nine
+  Skills:
+  - setstance{stance=preforcefield_1_9}
+  - delay 5
+  - skill{s=hwm_ff_toggle_3a_9}
+hwm_ff_toggle_2_9:
+  Conditions:
+  - stance preforcefield_1_9
+  Skills:
+  - setstance{stance=preforcefield_2_9}
+  - effect:sound{s=mob.guardian.idle;v=10;p=2} @selflocation
+  - delay 10
+  - setstance{stance=Nine_activeforcefield_9}
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>1b<&rc>"} @self
+hwm_ff_toggle_3a_9:
+  Conditions:
+  - stance preforcefield_1_9
+  Skills:
+  - setstance{stance=Nine_Ignite_Forcefield}
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>0b<&rc>"} @self
+hwm_ff_toggle_3b_9:
+  Conditions:
+  - stance activeforcefield_9
+  Skills:
+  - setstance{stance=Nine_Ignite_Forcefield}
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>0b<&rc>"} @self
+hwm_ff_toggle_1_10:
+  Cooldown: 3
+  Conditions:
+  - stance Ten
+  Skills:
+  - setstance{stance=preforcefield_1_10}
+  - delay 5
+  - skill{s=hwm_ff_toggle_3a_10}
+hwm_ff_toggle_2_10:
+  Conditions:
+  - stance preforcefield_1_10
+  Skills:
+  - setstance{stance=preforcefield_2_10}
+  - effect:sound{s=mob.guardian.idle;v=10;p=2} @selflocation
+  - delay 10
+  - setstance{stance=Ten_activeforcefield_10}
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>1b<&rc>"} @self
+hwm_ff_toggle_3a_10:
+  Conditions:
+  - stance preforcefield_1_10
+  Skills:
+  - setstance{stance=Ten_Ignite_Forcefield_Annihilate}
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>0b<&rc>"} @self
+hwm_ff_toggle_3b_10:
+  Conditions:
+  - stance activeforcefield_10
+  Skills:
+  - setstance{stance=Ten_Ignite_Forcefield_Annihilate}
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>0b<&rc>"} @self
+hwm_forcefield:
+  Conditions:
+  - stance activeforcefield
+  Skills:
+  - effect:particlesphere{p=smoke;a=75;v=1;r=5} @self
+  - effect:particlesphere{p=spell;a=3;hS=0.1;vS=0.1;v=0;r=5} @self
+  - throw{v=10;vy=5}
+  - ignite{t=5}
+  - delay 1
+  - throw{v=10;vy=5}
+  - ignite{t=5}
+  - delay 1
+  - throw{v=10;vy=5}
+  - ignite{t=5}
+  - delay 1
+  - throw{v=10;vy=5}
+  - ignite{t=5}
+  - delay 1
+  - throw{v=10;vy=5}
+  - ignite{t=5}
+hwm_anni_toggle:
+#  Cooldown: 18000
+  Conditions:
+#  - incombat
+  - stance Annihilate
+  - playerwithin 5
+  Skills:
+  - setstance{stance=Ten_Levitate} @self
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>1b<&rc>"} @self
+#  - potion{t=BLINDNESS;d=120;l=0} @PlayersInRadius{radius=10}
+  - effect:sound{s=mob.guardian.curse;v=2;p=0} @selflocation
+  - effect:sound{s=portal.trigger;v=2;p=0.8} @selflocation
+  - effect:particles{p=depthsuspend;a=1000;hS=8;v=0;y=0.2} @self
+  - throw{v=-0.1;vy=3} @MobsInRadius{radius=15;types=Zombie,Skeleton,Creeper,Wither_Skeleton,Pig_Zombie,Enderman,Spider,Baby_Zombie}
+  - effect:particles{p=depthsuspend;a=100;hS=0.15;vS=1;v=0;y=1} @MobsInRadius{radius=15;types=Zombie,Skeleton,Creeper,Wither_Skeleton,Pig_Zombie,Enderman,Spider,Baby_Zombie}
+  - delay 55
+  - summon{m=hwm_annistand;a=4;r=1} @self
+  - effect:sound{s=portal.trigger;v=2;p=1.75} @selflocation
+  - delay 45
+#fxboom
+  - GCD{ticks=10}
+  - ignite{t=140} @MobsInRadius{radius=16;types=Zombie,Skeleton,Creeper,Wither_Skeleton,Pig_Zombie,Enderman,Spider,Baby_Zombie}
+  - damage{a=30;i=false} @MobsInRadius{radius=16;types=Zombie,Skeleton,Creeper,Wither_Skeleton,Pig_Zombie,Enderman,Spider,Baby_Zombie}
+  - setstance{stance=Ten_Ignite_Forcefield_Annihilate} @self
+  - delay 40
+  - delay 20
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>0b<&rc>"} @self
+hwm_anni_engine:
+  Conditions:
+  - stance Ten_Levitate
+  Skills:
+  - potion{t=SLOW;d=20;l=999}
+  - throw{v=-0.1;vy=0.2}
+  - effect:particles{p=depthsuspend;a=10;hS=0.3;vS=0.1;v=0;y=0}
+  - command{c="entitydata <mob.uuid> <&lc>Sitting<&co>1b<&rc>"} @self
+  - effect:particles{p=smoke;a=300;hS=8;v=0;y=0.2} @self
+  - effect:particles{p=depthsuspend;a=500;hS=8;v=0;y=0.2} @self 0.75
+  - effect:particles{p=flame;a=10;hS=8;v=1;y=0.1} @self 0.8
+  - effect:particles{p=flame;a=3;hS=2;v=1;y=0.1} @self 0.9
+  - delay 1
+  - throw{v=-0.1;vy=0.2}
+  - delay 1
+  - throw{v=-0.1;vy=0.2}
+  - delay 1
+  - throw{v=-0.1;vy=0.2}
+  - delay 1
+  - throw{v=-0.1;vy=0.2}
+hwm_lvl_damage: ### level based extra damage
+  Cooldown: 1
+  Skills:
+  - skill{s=hwm_lvl_damage_1}
+  - skill{s=hwm_lvl_damage_2}
+  - skill{s=hwm_lvl_damage_3}
+hwm_lvl_damage_1:
+  Conditions:
+  - stance One
+  Skills:
+  - damage{a=0.5;i=false} @target
+  - message{m="d1"} @PlayersInWorld
+hwm_lvl_damage_2:
+  Conditions:
+  - stance Two
+  Skills:
+  - damage{a=1;i=false} @target
+  - message{m="d2"} @PlayersInWorld
+hwm_lvl_damage_3:
+  Conditions:
+  - stance Three
+  Skills:
+  - damage{a=1.5;i=false} @target
+  - message{m="d3"} @PlayersInWorld
+#
+hwm_wolf_detector:
+  Conditions:
+  - incombat
+  - targetwithin 2
+  - mobtype Wolf
+  Skills:
+#  - remove @MobsInRadius{radius=2;types=Wolf}
+  - mounttarget{} @target

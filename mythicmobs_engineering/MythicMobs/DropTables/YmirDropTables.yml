@@ -1,0 +1,31 @@
+ymirdrops:
+  Drops:
+  # Fortune 5 Pickaxe
+  - ymirskull 1 1
+  - ymirbones 1 1
+  - ymirmind 1 1
+  # Emerald
+  - 388 1-40 1
+  # Gold Ingot
+  - 266 1-70 1
+  # Rotten Flesh
+  - 367 1-2 1
+  - 367 1-2 1
+  - 367 1-2 1
+  - 367 1-2 1
+  - 367 1-2 1
+  - 367 1-2 1
+  - 367 1-2 1
+  - 367 1-2 1
+  - 367 1-2 1
+lootcowxpdrops:
+  Drops:
+  - exp 13-27 1
+  - exp 13-27 1
+  - exp 13-27 1
+  - exp 13-27 1
+  - exp 13-27 1
+  - exp 13-27 1
+  - exp 13-27 1
+  - exp 13-27 1
+  - exp 13-27 1

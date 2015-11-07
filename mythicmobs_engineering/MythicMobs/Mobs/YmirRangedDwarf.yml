@@ -1,0 +1,40 @@
+adwa:
+  Type: Skeleton
+  Display: '&7&oDwarven Archer'
+  Health: 40
+  Damage: 1
+  Options:
+    MovementSpeed: 0.22
+    FollowRange: 100
+    PreventOtherDrops: true
+    Despawn: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 Float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Skills:
+  - setstance{stance=norage} ~onSpawn 1
+  - skill{s=yadwaeq4} ~onSpawn 1
+  - skill{s=yadwaeq3} ~onSpawn 1
+  - skill{s=yadwaeq2} ~onSpawn 1
+  - skill{s=yadwaeq1} ~onSpawn 1
+  - skill{s=yadwaeq0} ~onSpawn 1
+  - skill{s=ydwaskin} ~onSpawn 1
+  - skill{s=wdwadam1} ~onDamaged 1
+  - skill{s=wdwadam2} ~onDamaged 1
+  - skill{s=wdwadeath} ~onDeath 1
+  - skill{s=wdwaragemode} ~onDamaged =50%-0% 1
+  - effect:particles{particle=reddust;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1} @self ~onTimer:20 =50%-0% 0.8
+  - skill{s=shootr20} ~onTimer:40 0.9
+  - skill{s=shootr15} ~onTimer:40 0.9
+  - skill{s=shootr10} ~onTimer:40 0.9
+  - skill{s=shootr7} ~onTimer:40 0.9
+  - skill{s=shootr5} ~onTimer:40 0.9
+  - skill{s=shootr3} ~onTimer:40 0.9
+  - skill{s=adwafreeze} ~onTimer:30 1
+  - effect:sound{sound=dig.stone;p=0} @selflocation ~onTimer:60 0.2
+  Drops:
+  - adwaDrops

@@ -1,0 +1,55 @@
+DwarfenHelmet:
+  Id: 306
+  Options:
+    Unbreakable: true
+  Enchantments:
+  - PROTECTION_ENVIRONMENTAL:5
+DwarfenChestplate:
+  Id: 307
+  Options:
+    Unbreakable: true
+DwarfenPants:
+  Id: 300
+  Options:
+    Color: 0,0,0
+    Unbreakable: true
+DwarfenShoes:
+  Id: 313
+  Options:
+    Unbreakable: true
+  Enchantments:
+  - PROTECTION_ENVIRONMENTAL:5
+NoRageIronPick:
+  Id: 257
+  Options:
+    Unbreakable: true
+  Enchantments:
+  - DAMAGE_ALL:4
+  - KNOCKBACK:1
+DwarfenDiamondPick:
+  Id: 278
+  Options:
+    Unbreakable: true
+    MovementSpeed: 0.1
+  Enchantments:
+  - DAMAGE_ALL:5
+  - DIG_SPEED:1
+  - KNOCKBACK:2
+  - LOOT_BONUS_BLOCKS:4
+###
+### DROPS:
+DwarfenDiamondPickDrop:
+  Id: 278
+  Data: 1001
+  Display: '&b&oDwarfen Pickaxe'
+  Lore:
+  - ''
+  - '&c&oForged by dwarfs, for dwarfs.'
+  - '&c&oYou really shouldnt have this.'
+  Options:
+    MovementSpeed: 0.1
+  Enchantments:
+  - DAMAGE_ALL:5
+  - DIG_SPEED:1
+  - KNOCKBACK:2
+  - LOOT_BONUS_BLOCKS:4

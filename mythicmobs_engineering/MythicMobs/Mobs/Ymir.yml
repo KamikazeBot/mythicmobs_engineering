@@ -1,0 +1,162 @@
+# Ymir
+ymir:
+  Type: giant
+  Display: '&bYmir'
+  Health: 500
+  Damage: 11
+  Options:
+    MovementSpeed: 0.15
+    Despawn: false
+    KnockbackResistance: 0.75
+  Faction: ymir
+  Skills:
+# initiation skills
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1
+  - setstance{stance=forcefieldon1} @self ~onSpawn 1
+  - skill{s=summonorbs} ~onSpawn 1
+  - skill{s=ymiricyradius} ~onSpawn 1
+# skills
+  - skill{s=ymirhealth} ~onDamaged 1
+  - skill{s=ymirdeath} ~onDeath 1
+# forcefield skills
+  - skill{s=wispforcefield1} ~onTimer:10 1
+  - skill{s=wispforcefield2} ~onTimer:15 1
+  - skill{s=wispforcefield3} ~onTimer:15 1
+  - skill{s=ymirforcefield1} @self ~onTimer:15 1
+  - skill{s=ymirforcefield2} @self ~onTimer:20 1
+  - skill{s=ymirforcefield3} @self ~onTimer:25 1
+  - pull{v=6} @MobsInRadius{radius=100;types=icyorb1,icyorb2,icyorb2dummy,icyorb3,icyorb3dummy} ~onTimer:80 1
+# FX skills
+  - weather{type=storm} ~onTimer:140 1
+  - effect:particles{particle=blockcrack_174;amount=300;vSpread=0;hSpread=5;Speed=0;yoffset=0.25} @self ~onTimer:20 1
+  - effect:particles{particle=blockcrack_174;amount=600;vSpread=40;hSpread=40;Speed=0;yoffset=1} @self ~onTimer:20 1
+  - effect:particles{particle=depthsuspend;amount=1000;vSpread=20;hSpread=20;Speed=0;yoffset=1} @self ~onTimer:100 1
+  - skill{s=ymirgrowl} ~onTimer:100 0.4
+  - skill{s=ymirgrowl2} ~onDamaged 0.8
+  - skill{s=ymirwindy} ~onTimer:60 0.25
+  - skill{s=ymirlightning} ~onDamaged 0.1
+  - skill{s=ymiricyblocks} ~onTimer:10 1
+  - skill{s=ymirrandomiceattack} ~onTimer:140 1
+# battle skills
+  - skill{s=ymirjump} ~onAttack 0.25
+  - skill{s=ymirlightningattack} ~onDamaged 0.25
+  - skill{s=ymiriceattack} ~onDamaged 0.15
+  - skill{s=ymirslowice} ~onAttack 0.35
+  - skill{s=ymirmadsmite} ~onDamaged 0.09
+  DamageModifiers:
+  - ENTITY_ATTACK 10
+  - PROJECTILE 2.5
+  Equipment:
+  - YmirHelmet:4
+  - YmirChestplate:3
+  - YmirPants:2
+  - YmirShoes:1
+  - dullSkull:0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 MeleeAttack
+  - 2 MoveTowardsTarget
+  - 3 LookAtPlayers
+  - 4 Float
+  AITargetSelectors:
+  - 0 players
+#################################################################################
+deadymir:
+  Type: giant
+  Display: '&7&oDEAD YMIR DUMMY'
+  Health: 2000
+  Damage: 0
+  Options:
+    MovementSpeed: 0
+    Despawn: false
+    KnockbackResistance: 1
+    Silent: true
+  Faction: deadymir
+  Skills:
+# skills
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1
+  - skill{s=ymirdeath2} ~onSpawn 1
+  DamageModifiers:
+  - ENTITY_ATTACK 0
+  - PROJECTILE 0
+  Equipment:
+  - YmirHelmet:4
+  - YmirChestplate:3
+  - YmirPants:2
+  - YmirShoes:1
+  - DwarfenDiamondPick:0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 LookAtPlayers
+  AITargetSelectors:
+  - 0 clear
+#################################################################################
+## Lightning rod dummies
+# variable, moving
+lrod:
+  Type: Cow
+  Health: 2000
+  Options:
+    Silent: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    KnockbackResistance: 1
+  DamageModifiers:
+  - LIGHTNING 0
+  - ENTITIY_ATTACK 0
+  - PROJECTILE 0
+  Skills:
+  - potion{type=INVISIBILITY;d=99999;l=1} @self ~onSpawn 1
+# stational, damaging
+lrod2:
+  Type: Cow
+  Health: 1
+  Options:
+    Silent: true
+    MovementSpeed: 0
+    PreventOtherDrops: true
+    KnockbackResistance: 1
+  DamageModifiers:
+  - LIGHTNING 1000
+  - ENTITIY_ATTACK 0
+  - PROJECTILE 0
+  Skills:
+  - potion{type=INVISIBILITY;d=99999;l=1} @self ~onSpawn 1
+  - damage{a=6;i=true} @PlayersInRadius{r=3} ~onDeath 1
+#################################################################################
+# gear drops (centered)
+lootcow:
+  Type: Cow
+  Health: 50
+  Options:
+    Silent: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    KnockbackResistance: 1
+  DamageModifiers:
+  - ENTITIY_ATTACK 0
+  - PROJECTILE 0
+  Skills:
+  - potion{type=INVISIBILITY;d=99999;l=1} @self ~onSpawn 1
+  - jump{velocity=2} @self ~onSpawn 1
+  - skill{s=lootcowsuicide} ~onSpawn 1
+  Drops:
+  - ymirdrops
+# XP drops (scattered, ender drageon-esque)
+lootcow2:
+  Type: Cow
+  Health: 50
+  Options:
+    Silent: true
+    MovementSpeed: 0.01
+    PreventOtherDrops: true
+    KnockbackResistance: 1
+  DamageModifiers:
+  - ENTITIY_ATTACK 0
+  - PROJECTILE 0
+  Skills:
+  - potion{type=INVISIBILITY;d=99999;l=1} @self ~onSpawn 1
+  - jump{velocity=2} @self ~onSpawn 1
+  - skill{s=lootcowsuicide} ~onSpawn 1
+  Drops:
+  - lootcowxpdrops

@@ -1,0 +1,78 @@
+## Armor section
+# Helmets
+yd4l:
+  Id: 298
+yd4redl:
+  Id: 298
+  Options:
+    Color: 178,21,21
+yd4c:
+  Id: 302
+yd4i:
+  Id: 306
+yd4g:
+  Id: 314
+yd4d:
+  Id: 310
+# Chestplates
+yd3l:
+  Id: 299
+yd3redl:
+  Id: 299
+  Options:
+    Color: 178,21,21
+yd3c:
+  Id: 303
+  Options:
+    Unbreakable: true
+yd3i:
+  Id: 307
+yd3g:
+  Id: 315
+yd3d:
+  Id: 311
+# Pants
+yd2l:
+  Id: 300
+yd2c:
+  Id: 304
+yd2i:
+  Id: 308
+yd2g:
+  Id: 316
+yd2d:
+  Id: 312
+# Shoes
+yd1l:
+  Id: 301
+yd1c:
+  Id: 305
+yd1i:
+  Id: 309
+yd1g:
+  Id: 317
+yd1d:
+  Id: 313
+# Weapons:
+yd0gs:
+  Id: 283
+yd0is:
+  Id: 267
+yd0ds:
+  Id: 276
+yd0ga:
+  Id: 275
+yd0ia:
+  Id: 286
+yd0da:
+  Id: 279
+yd0ip:
+  Id: 257
+yd0dp:
+  Id: 278
+# Bows:
+yd0b:
+  Id: 261
+# Anvil:
+yd0anv:
+  Id: 145

@@ -1,0 +1,32 @@
+rotmin:
+  Type: zombie_villager
+  Display: '&7Rotten Miner'
+  Health: 80
+  Damage: 7
+  Options:
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    Despawn: true
+    MovementSpeed: 0.31
+    ReinforcementsChance: 0
+  Modules:
+    ThreatTable: true
+  Equipment:
+  - RottenMinerH:4
+  - RottenMinerC:3
+  - RottenMinerPick:0
+  DamageModifiers:
+  - PROJECTILE 0.5
+  Skills:
+  - damage{a=2;i=true} @target ~onAttack 1
+  - skill{s=fatinfect} ~onAttack 1 
+  - skill{s=spawnsilverfish} ~onDamaged 0.3
+  - effect:particles{particle=depthsuspend;amount=25;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self ~onTimer:60 0.5
+  - effect:particles{particle=depthsuspend;amount=50;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self ~onDamaged 1
+  - effect:particles{particle=depthsuspend;amount=100;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self ~onDeath 1
+  Drops:
+  - rotmindrops
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  - 2 players

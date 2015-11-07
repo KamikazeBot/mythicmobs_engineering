@@ -1,0 +1,125 @@
+# Random Warrior Helmet
+ydwaeq4:
+  Skills:
+  - equip{i=yd4l:4} @Self 1
+  - equip{i=yd4c:4} @Self 0.7
+  - equip{i=yd4i:4} @Self 0.5
+  - equip{i=yd4g:4} @Self 0.08
+  - equip{i=yd4d:4} @Self 0.1
+  - equip{i=Dummy:4} @Self 0.05
+# Random Warrior Chestplate
+ydwaeq3:
+  Skills:
+  - equip{i=yd3l:3} @Self 1
+  - equip{i=yd3c:3} @Self 0.7
+  - equip{i=yd3i:3} @Self 0.5
+  - equip{i=yd3g:3} @Self 0.08
+  - equip{i=yd3d:3} @Self 0.1
+  - equip{i=Dummy:3} @Self 0.01
+# Random Warrior Pants
+ydwaeq2:
+  Skills:
+  - equip{i=yd2l:2} @Self 1
+  - equip{i=yd2c:2} @Self 0.7
+  - equip{i=yd2i:2} @Self 0.5
+  - equip{i=yd2g:2} @Self 0.08
+  - equip{i=yd2d:2} @Self 0.1
+  - equip{i=Dummy:2} @Self 0.05
+# Random Warrior Shoes
+ydwaeq1:
+  Skills:
+  - equip{i=yd1l:1} @Self 1
+  - equip{i=yd1c:1} @Self 0.7
+  - equip{i=yd1i:1} @Self 0.5
+  - equip{i=yd1g:1} @Self 0.08
+  - equip{i=yd1d:1} @Self 0.1
+  - equip{i=Dummy:1} @Self 0.05
+# Random Melee Weapon
+ydwaeq0:
+  Skills:
+  - equip{i=yd0is:0} @Self 1	
+  - equip{i=yd0gs:0} @Self 0.1
+  - equip{i=yd0ds:0} @Self 0.4
+  - equip{i=yd0ga:0} @Self 0.1
+  - equip{i=yd0ia:0} @Self 0.2
+  - equip{i=yd0da:0} @Self 0.05
+  - equip{i=yd0ip:0} @Self 0.2
+  - equip{i=yd0dp:0} @Self 0.05
+# Random Archer Helmet
+yadwaeq4:
+  Skills:
+#  - equip{i=yd4l:4} @Self 1
+  - equip{i=yd4c:4} @Self 1
+#  - equip{i=yd4i:4} @Self 0.5
+#  - equip{i=yd4g:4} @Self 0.08
+#  - equip{i=yd4d:4} @Self 0.1
+#  - equip{i=Dummy:4} @Self 0.05
+# Random Archer Chestplate
+yadwaeq3:
+  Skills:
+#  - equip{i=yd3l:3} @Self 1
+  - equip{i=yd3c:3} @Self 1
+#  - equip{i=yd3i:3} @Self 0.5
+#  - equip{i=yd3g:3} @Self 0.08
+#  - equip{i=yd3d:3} @Self 0.1
+#  - equip{i=Dummy:3} @Self 0.01
+# Random Archer Pants
+yadwaeq2:
+  Skills:
+  - equip{i=yd2l:2} @Self 1
+#  - equip{i=yd2c:2} @Self 0.7
+#  - equip{i=yd2i:2} @Self 0.5
+#  - equip{i=yd2g:2} @Self 0.08
+#  - equip{i=yd2d:2} @Self 0.1
+#  - equip{i=Dummy:2} @Self 0.05
+# Random Archer Shoes
+yadwaeq1:
+  Skills:
+#  - equip{i=yd1l:1} @Self 1
+#  - equip{i=yd1c:1} @Self 0.7
+  - equip{i=yd1i:1} @Self 1
+#  - equip{i=yd1g:1} @Self 0.08
+#  - equip{i=yd1d:1} @Self 0.1
+#  - equip{i=Dummy:1} @Self 0.05
+# Random Mage Helmet
+ymdwaeq4:
+  Skills:
+  - equip{i=yd4redl:4} @Self 1
+# Random Mage Chestplate
+ymdwaeq3:
+  Skills:
+  - equip{i=yd3redl:3} @Self 1
+# Random Mage Pants
+ymdwaeq2:
+  Skills:
+  - equip{i=yd2l:2} @Self 1
+  - equip{i=yd2c:2} @Self 0.7
+  - equip{i=yd2i:2} @Self 0.5
+  - equip{i=yd2g:2} @Self 0.08
+  - equip{i=yd2d:2} @Self 0.8
+# Random Mage Shoes
+ymdwaeq1:
+  Skills:
+  - equip{i=yd1l:1} @Self 1
+  - equip{i=yd1c:1} @Self 0.7
+  - equip{i=yd1i:1} @Self 0.5
+  - equip{i=yd1g:1} @Self 0.08
+  - equip{i=yd1d:1} @Self 0.7
+# "Random" Bow:
+yadwaeq0:
+  - equip{i=yd0b:0} @Self 1
+# Random Mage Weapon
+ymdwaeq0:
+  Skills:
+  - equip{i=yd0anv:0} @Self 1
+# Random Skin
+ydwaskin:
+  Skills:
+  - disguise{d=player:&7:Gravn} @Self 1
+  - disguise{d=player:&7:Mattyyy} @Self 0.1
+  - disguise{d=player:&7:memnoc} @Self 0.24
+  - disguise{d=player:&7:Neofelis} @Self 0.45
+  - disguise{d=player:&7:Tornado95} @Self 0.1
+  - disguise{d=player:&7:xscizorx} @Self 0.3
+  - disguise{d=player:&7:Jesse} @Self 0.4
+  - disguise{d=player:&7:honeydew} @Self 0.01

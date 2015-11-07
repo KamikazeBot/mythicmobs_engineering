@@ -1,0 +1,61 @@
+gz1:
+    MobType: zombie
+    Display: '&d&oFabulous Zombie'
+    Health: 250
+    Damage: 7
+    DamageModifiers:
+    - MAGIC 100
+    - PROJECTILE 1.25
+    Options:
+      Silent: true
+      MovementSpeed: 0.3
+      MaxCombatDistance: 15
+      PreventOtherDrops: true
+      AlwaysShowName: true
+      KnockbackResistance: 0.75
+      PreventItemPickup: true
+      ReinforcementsChance: 0
+    Modules:
+      ThreatTable: true
+    Equipment:
+      - PinkH2:4
+      - PinkC2:3
+      - PinkL2:2
+      - PinkF2:1
+    Skills:
+      - skill{s=fabpull} ~onTimer:60 0.33
+      - skill{s=fabminions} ~onDamaged 0.33
+      - effect:sound{sound=mob.zombie.say;p=1.25} @selflocation ~onTimer:60 0.75
+      - effect:sound{sound=mob.zombie.hurt;p=1.25} @selflocation ~onDamaged 1
+      - effect:particles{particle=heart;amount=20;vSpread=0.5;hSpread=1;Speed=0;yoffset=1} @self ~onCombat 0.9
+      - effect:particles{particle=heart;amount=1;vSpread=0.5;hSpread=0.6;Speed=0;yoffset=1} @self ~onTimer:20 0.5
+    Drops:
+      - gz1drops
+    AITargetSelectors:
+      - 0 clear
+      - 1 players
+      - 2 attacker
+gz1m:
+    MobType: baby_zombie
+    Display: '&d&oFabulous Minion'
+    Health: 20
+    Damage: 4
+    Options:
+        MaxCombatDistance: 30
+        PreventOtherDrops: false
+        AlwaysShowName: false
+        KnockbackResistance: 0.1
+        Despawn: true
+        PreventItemPickup: false
+        ReinforcementsChance: 0.5
+    Equipment:
+      - PinkH2:4
+      - PinkC2:3
+    Skills:
+      - effect:particles{particle=heart;amount=1;vSpread=0.5;hSpread=0.6;Speed=0;yoffset=1} @self ~onTimer:500 0.5
+    Drops:
+      - gz1mdrops
+    AITargetSelectors:
+      - 0 clear
+      - 1 players
+      - 2 attacker

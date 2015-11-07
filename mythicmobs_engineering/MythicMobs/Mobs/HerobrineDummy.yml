@@ -1,0 +1,31 @@
+hedum1:
+  Type: COW
+  Disguise:
+    Type: player
+    Player: '&4&kHEROBRINE' 
+    Skin: Herobrine
+  Display: '&4&kHEROBRINE'
+  Health: 2000
+  Damage: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 LookAtPlayers
+  - 2 AvoidPlayers
+  - 3 RandomStroll
+  - 4 RandomLookAround
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  Options:
+    AlwaysShowName: false
+    PreventOtherDrops: true
+    Despawn: true
+    MovementSpeed: 0.2
+  Equipment:
+  DamageModifiers:
+  - ENTITY_ATTACK 3
+  - PROJECTILE 3
+  Skills:
+#  - skill{s=herovanish2} ~onDamaged 1
+  - skill{s=herobrinevanish} ~onDamaged 1
+#  - disguise{d=player:&4&kHEROBRINE:<target.name>} @Self ~onDamaged 1

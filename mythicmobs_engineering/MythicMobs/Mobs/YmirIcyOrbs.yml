@@ -1,0 +1,166 @@
+##########################################################################
+icyorb1:
+  Type: blaze
+  Health: 1000
+  Damage: 0
+  Faction: icyorb1
+  Options:
+    MovementSpeed: 0.5
+    Silent: true
+    FollowRange: 100
+    Despawn: false
+    PreventOtherDrops: true
+  DamageModifiers:
+  - DROWNING 0
+  - LIGHTNING 0
+  - MAGIC 0
+  - FIRE_TICK 0
+  - PROJECTILE 100
+  - ENTITY_ATTACK 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 movetowardstarget
+  AITargetSelectors:
+  - 0 clear
+  - 1 specificfactionmonsters ymir
+  Skills:
+  - effect:sound{sound=random.orb;v=0.05;p=2} @selflocation ~onTimer:10 0.3
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1
+  - effect:particles{particle=blockcrack_81;amount=100;vSpread=0;hSpread=0;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  - effect:particles{particle=snowshovel;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  - setstance{stance=forcefieldon2} @MobsInRadius{radius=100;types=ymir} ~onDeath 1
+  - summon{m=icyorb2;a=1;r=0} @MobsInRadius{radius=100;types=icyorb2dummy} ~onDeath 1
+  - remove{m=icyorb2dummy} @MobsInRadius{radius=100;types=icyorb2dummy} ~onDeath 1
+  - skill{s=ymirfirstwave} ~onDeath 1
+##########################################################################
+icyorb2:
+  Type: blaze
+  Health: 1000
+  Damage: 0
+  Faction: icyorb2
+  Options:
+    MovementSpeed: 0.5
+    Silent: true
+    FollowRange: 100
+    Despawn: false
+    PreventOtherDrops: true
+  DamageModifiers:
+  - DROWNING 0
+  - LIGHTNING 0
+  - MAGIC 0
+  - FIRE_TICK 0
+  - PROJECTILE 100
+  - ENTITY_ATTACK 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 movetowardstarget
+  AITargetSelectors:
+  - 0 clear
+  - 1 specificfactionmonsters ymir
+  Skills:
+  - effect:sound{sound=random.orb;v=0.05;p=2} @selflocation ~onTimer:10 0.3
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1
+  - effect:particles{particle=blockcrack_09;amount=100;vSpread=0;hSpread=0;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  - effect:particles{particle=snowshovel;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  - setstance{stance=forcefieldon3} @MobsInRadius{radius=100;types=ymir} ~onDeath 1
+  - summon{m=icyorb3;a=1;r=0} @MobsInRadius{radius=100;types=icyorb3dummy} ~onDeath 1
+  - remove{m=icyorb3dummy} @MobsInRadius{radius=100;types=icyorb3dummy} ~onDeath 1
+  - skill{s=ymirsecondwave} ~onDeath 1
+###########################################################################
+icyorb3:
+  Type: blaze
+  Health: 1000
+  Damage: 0
+  Faction: icyorb3
+  Options:
+    MovementSpeed: 0.5
+    Silent: true
+    FollowRange: 100
+    Despawn: false
+    PreventOtherDrops: true
+  DamageModifiers:
+  - DROWNING 0
+  - LIGHTNING 0
+  - MAGIC 0
+  - FIRE_TICK 0
+  - PROJECTILE 100
+  - ENTITY_ATTACK 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 movetowardstarget
+  AITargetSelectors:
+  - 0 clear
+  - 1 specificfactionmonsters ymir
+  Skills:
+  - effect:sound{sound=random.orb;v=0.05;p=2} @selflocation ~onTimer:10 0.3
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1
+  - effect:particles{particle=blockcrack_152;amount=100;vSpread=0;hSpread=0;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  - effect:particles{particle=snowshovel;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  - setstance{stance=forcefieldoff} @MobsInRadius{radius=100;types=ymir} ~onDeath 1
+  - skill{s=ymirthirdwave} ~onDeath 1
+###########################################################################
+icyorb2dummy:
+  Type: blaze
+  Health: 2000
+  Damage: 0
+  Faction: icyorb2dummy
+  Options:
+    MovementSpeed: 0.5
+    Silent: true
+    FollowRange: 100
+    Despawn: false
+    PreventOtherDrops: true
+  DamageModifiers:
+  - DROWNING 0
+  - LIGHTNING 0
+  - MAGIC 0
+  - FIRE_TICK 0
+  - PROJECTILE 0
+  - ENTITY_ATTACK 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 movetowardstarget
+  AITargetSelectors:
+  - 0 clear
+  - 1 specificfactionmonsters ymir
+  Skills:
+  - effect:sound{sound=random.orb;v=0.05;p=2} @selflocation ~onTimer:10 0.3
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1
+  - effect:particles{particle=blockcrack_09;amount=100;vSpread=0;hSpread=0;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  - effect:particles{particle=snowshovel;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+###########################################################################
+icyorb3dummy:
+  Type: blaze
+  Health: 2000
+  Damage: 0
+  Faction: icyorb3dummy
+  Options:
+    MovementSpeed: 0.5
+    Silent: true
+    FollowRange: 100
+    Despawn: false
+    PreventOtherDrops: true
+  DamageModifiers:
+  - DROWNING 0
+  - LIGHTNING 0
+  - MAGIC 0
+  - FIRE_TICK 0
+  - PROJECTILE 0
+  - ENTITY_ATTACK 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 movetowardstarget
+  AITargetSelectors:
+  - 0 clear
+  - 1 specificfactionmonsters ymir
+  Skills:
+  - effect:sound{sound=random.orb;v=0.05;p=2} @selflocation ~onTimer:10 0.3
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1
+  - effect:particles{particle=blockcrack_152;amount=100;vSpread=0;hSpread=0;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  - effect:particles{particle=snowshovel;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1.5} @self ~onTimer:10 1
+  ###########################################################################

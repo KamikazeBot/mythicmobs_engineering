@@ -1,0 +1,16 @@
+dwarfendrops:
+  Conditions:
+  - inblock air
+  Drops:
+  - DwarfenDiamondPickDrop 1 0.2
+  - exp 500
+  # Diamond
+  - 264 1-3 1
+  # Emerald
+  - 388 1-8 1
+  # Iron Ingot
+  - 265 2-5 1
+  # Gold Ingot
+  - 266 1-4 1
+  # Rotten Flesh
+  - 367 1 1

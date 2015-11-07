@@ -1,0 +1,66 @@
+# Remove & cancel dwarf
+summonymirp1:
+  Conditions:
+  - onblock diamond_block
+  - heightabove 63
+  Skills:
+  - lightning @self
+  - summon{m=dblock;a=1;r=0}
+  - remove @self
+# Diamond block FX & summoning of ymir
+summonymirp2:
+  Skills:
+  - command{cmd="weather storm"}
+  - potion{type=SLOW;d=99999;l=99999} @self
+  - effect:sound{sound=mob.wither.spawn;p=2} @PlayersInRadius{radius=50}
+  - delay 140
+  - effect:sound{sound=mob.zombie.unfect;p=2} @PlayersInRadius{radius=50}
+  - delay 20
+  - effect:sound{sound=mob.zombie.unfect;p=1.5} @PlayersInRadius{radius=50}
+  - delay 40
+  - effect:sound{sound=mob.zombie.unfect;p=0.5} @PlayersInRadius{radius=50}
+  - delay 20
+  - effect:sound{sound=mob.zombie.unfect;v=1;p=0} @PlayersInRadius{radius=50}
+  - effect:sound{sound=mob.zombie.unfect;v=1;p=0.05} @PlayersInRadius{radius=50}
+  - effect:sound{sound=mob.zombie.unfect;v=1;p=0.1} @PlayersInRadius{radius=50}
+  - delay 30
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0} @PlayersInRadius{radius=50}
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0.157} @PlayersInRadius{radius=50}
+  - delay 20
+  - potion{type=NIGHT_VISION;d=40;l=1} @PlayersInRadius{radius=50}
+  - potion{type=BLINDNESS;d=25;l=1} @PlayersInRadius{radius=50}
+  - effect:flames @self
+  - lightning @self
+  - weather{type=storm}
+  - explosion{blockdamage=true;fire=true;yield=15} @self
+  - summon{m=ymir;a=1;r=0} @self
+# pillar 1
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~7 ~7 ~7 ~7 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~8 ~-6 ~7 ~8 ~4 ~7 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~6 ~-6 ~7 ~6 ~2 ~7 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~8 ~7 ~3 ~8 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~6 ~7 ~4 ~6 ice 0 replace air"} @self
+# pillar 2
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-7 ~-6 ~7 ~-7 ~6 ~7 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-8 ~-6 ~7 ~-8 ~3 ~7 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-6 ~-6 ~7 ~-6 ~2 ~7 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-7 ~-6 ~8 ~-7 ~2 ~8 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-7 ~-6 ~6 ~-7 ~1 ~6 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-7 ~-6 ~5 ~-7 ~0 ~5 packed_ice 0 replace air"} @self
+# pillar 3
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-7 ~-6 ~-7 ~-7 ~5 ~-7 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-8 ~-6 ~-7 ~-8 ~4 ~-7 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-6 ~-6 ~-7 ~-6 ~2 ~-7 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-7 ~-6 ~-8 ~-7 ~1 ~-8 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-7 ~-6 ~-9 ~-7 ~0 ~-9 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~-7 ~-6 ~-6 ~-7 ~1 ~-6 ice 0 replace air"} @self
+# pillar 4
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~-7 ~7 ~6 ~-7 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~8 ~-6 ~-7 ~8 ~4 ~-7 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~6 ~-6 ~-7 ~6 ~3 ~-7 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~-8 ~7 ~2 ~-8 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~-6 ~7 ~1 ~-6 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~-5 ~7 ~0 ~-5 packed_ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~-4 ~7 ~-1 ~-4 ice 0 replace air"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~7 ~-6 ~-3 ~7 ~-2 ~-3 packed_ice 0 replace air"} @self
+  - remove @self

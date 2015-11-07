@@ -1,0 +1,66 @@
+# Ender Skeleton
+endske:
+  Type: WITHER_SKELETON
+  Display: '&5Ender Skeleton'
+  Health: 100
+  Faction: End
+  Options:
+    FollowRange: 30
+    MovementSpeed: 0.29
+  Equipment:
+  - Dummy:4
+  - EndSke1C:3
+  - EndSke1L:2
+  - EndSke1F:1
+  - endskebow:0
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 attacker
+  DamageModifiers:
+  - PROJECTILE 0.3
+  Skills:
+  - shoot{t=arrow;d=3;md=25;v=1.5} @Target ~onDamaged 0.3
+  - skill{s=tptoplayer} ~onDamaged 0.8
+  - skill{s=tptoself} ~onAttack 0.3
+  - skill{s=waterdamage} ~onTimer:5 1
+  - effect:sound{sound=mob.endermen.idle;p=0} @selflocation ~onTimer:60 0.25
+  - effect:sound{sound=mob.endermen.scream;p=0} @selflocation ~onDeath 1
+  - command{cmd="scoreboard players add $player endskekills 1"} @trigger ~onDeath 1
+  - effect:particles{particle=depthsuspend;amount=1250;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=0} @self ~onDeath 1
+  - effect:particles{particle=portal;amount=150;vSpread=0.5;hSpread=0.75;Speed=0.4;yoffset=1.5} @self ~onDeath 1
+  - effect:particles{particle=portal;amount=50;vSpread=0.5;hSpread=1;Speed=0.4;yoffset=1.5} @self ~onDamaged 1
+  Drops:
+  - endskeDrops
+##############################################################################
+# Minor Ender Skeleton
+mendske:
+  Type: SKELETON
+  Display: '&5Minor Ender Skeleton'
+  Health: 65
+  Faction: End
+  Options:
+    MovementSpeed: 0.23
+  Equipment:
+  - Dummy:4
+  - EndSke1C:3
+  - EndSke1L:2
+  - EndSke1F:1
+  - mendskebow:0
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  DamageModifiers:
+  - PROJECTILE 0.5
+  Skills:
+  - skill{s=spawnendske1} ~onDamaged 0.01
+  - shoot{t=arrow;d=3;md=25;v=1.5} @Target ~onDamaged 0.3
+  - skill{s=tptoplayer} ~onDamaged 0.4
+  - skill{s=tptoself} ~onAttack 0.3
+  - skill{s=waterdamage} ~onTimer:5 1
+  - effect:sound{sound=mob.endermen.idle;p=0.5} @selflocation ~onTimer:60 0.25
+  - effect:particles{particle=depthsuspend;amount=1250;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=0} @self ~onDeath 1
+  - effect:particles{particle=portal;amount=150;vSpread=0.5;hSpread=0.75;Speed=0.4;yoffset=1.5} @self ~onDeath 1
+  - effect:particles{particle=portal;amount=50;vSpread=0.5;hSpread=1;Speed=0.4;yoffset=1.5} @self ~onDamaged 1
+  Drops:
+  - mendskeDrops

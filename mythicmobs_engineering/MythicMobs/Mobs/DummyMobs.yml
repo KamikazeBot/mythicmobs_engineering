@@ -1,0 +1,32 @@
+# Lightning rod
+lrod:
+  Type: Cow
+  Health: 2000
+  Options:
+    Silent: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    KnockbackResistance: 1
+  DamageModifiers:
+  - LIGHTNING 0
+  - ENTITIY_ATTACK 0
+  - PROJECTILE 0
+  Skills:
+  - potion{type=INVISIBILITY;d=99999;l=1} @self ~onSpawn 1
+######################################
+lrod2:
+  Type: Cow
+  Health: 1
+  Options:
+    Silent: true
+    MovementSpeed: 0
+    PreventOtherDrops: true
+    KnockbackResistance: 1
+  DamageModifiers:
+  - LIGHTNING 1000
+  - ENTITIY_ATTACK 0
+  - PROJECTILE 0
+  Skills:
+  - potion{type=INVISIBILITY;d=99999;l=1} @self ~onSpawn 1
+  - damage{a=6;i=true} @PlayersInRadius{r=3} ~onDeath 1
+######################################

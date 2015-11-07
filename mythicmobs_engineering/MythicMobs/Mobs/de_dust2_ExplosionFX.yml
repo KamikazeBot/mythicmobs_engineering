@@ -1,0 +1,20 @@
+csbomb:
+  Type: Cow
+  Health: 1
+  Options:
+    Silent: true
+    MovementSpeed: 0
+    PreventOtherDrops: true
+    KnockbackResistance: 1
+  DamageModifiers:
+  - LIGHTNING 0
+  - ENTITIY_ATTACK 0
+  - PROJECTILE 0
+  Skills:
+  - potion{type=INVISIBILITY;d=99999;l=1} @self ~onSpawn 1
+  - effect:particles{particle=largeexplode;amount=750;vSpread=4;hSpread=4;yoffset=1;Speed=1} @self ~onSpawn 1
+  - effect:particles{particle=explode;amount=500;vSpread=5;hSpread=5;yoffset=1;Speed=1} @self ~onSpawn 1
+  - effect:sound{sound=random.explode;v=4;p=0} @selflocation ~onSpawn 1
+  - effect:sound{sound=random.explode;v=4;p=0.1} @selflocation ~onSpawn 1
+  - delay 10
+  - remove @self ~onSpawn 1

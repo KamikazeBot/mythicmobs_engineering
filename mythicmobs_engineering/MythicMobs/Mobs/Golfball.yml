@@ -1,0 +1,10 @@
+gb:
+  MobType: chicken
+  Display: '&f&oGolf Ball' 
+  Health: 100
+#  Options:
+#    Despawn: false
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear

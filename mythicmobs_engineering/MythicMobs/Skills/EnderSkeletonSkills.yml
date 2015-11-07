@@ -1,0 +1,46 @@
+# Ender Skeleton Skills
+tptoplayer:
+  Cooldown: 1
+  Skills:
+  - effect:sound{sound=mob.endermen.portal;p=0.9} @selflocation
+  - skill{s=summonendermite}
+  - teleport{spreadH=10} @Target 1
+tptoself:
+  Skills:
+  - effect:sound{sound=mob.endermen.portal;p=0.9} @selflocation
+  - teleport{spreadH=5} @Self
+summonendermite:
+  Cooldown: 1
+  Conditions:
+  - raining false
+  Skills:
+  - summon{m=endermite;a=2;r=0} @Self 0.05
+waterdamage:
+  Skills:
+  - skill{s=raindamage} @self 1
+  - skill{s=waterblockdamage} @self 1
+raindamage:
+  Conditions:
+  - outside true
+  - raining true
+  Skills:
+  - effect:sound{sound=mob.endermen.portal;p=0.6} @selflocation
+  - teleport{spreadH=35} @Self
+  - damage{a=2;i=true} @Self
+waterblockdamage:
+  Conditions:
+  - inblock STATIONARY_WATER
+  Skills:
+  - effect:sound{sound=mob.endermen.portal;p=0.6} @selflocation
+  - teleport{spreadH=35} @Self
+  - damage{a=2;i=true} @Self
+spawnendske1:
+  Conditions:
+  - raining false
+  Skills:
+  - effect:sound{sound=mob.endermen.portal;p=0} @selflocation
+  - effect:sound{sound=mob.endermen.scream;p=0} @selflocation
+  - effect:particles{particle=portal;amount=150;vSpread=1;hSpread=1;Speed=0;yoffset=1.5} @self
+  - effect:particles{particle=depthsuspend;amount=1500;vSpread=0.75;hSpread=0.75;Speed=0;yoffset=1.5} @self
+  - summon{m=endske;a=1;r=0} @self
+  - remove @self

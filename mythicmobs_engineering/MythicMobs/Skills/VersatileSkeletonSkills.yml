@@ -1,0 +1,18 @@
+eqSword:
+  Conditions:
+  - playerwithin 5
+  - stance ranged
+  Skills:
+  - equip{i=vsSword:0}
+  - effect:particles{particle=fireworksSpark;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1} @self
+  - setstance{stance=melee}
+#
+eqBow:
+  Conditions:
+  - playerwithin 30
+  - playernotwithin 5
+  - stance melee
+  Skills:
+  - equip{i=vsBow:0}
+  - effect:particles{particle=happyVillager;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1} @self
+  - setstance{stance=ranged}

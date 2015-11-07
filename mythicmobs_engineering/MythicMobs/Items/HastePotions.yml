@@ -1,0 +1,22 @@
+haste1po:
+  Id: potion
+  Data: 8195
+  Display: '&6Small Mining Potion'
+  Options:
+  Lore:
+  - ''
+  - 'Not quite a beacon...'
+  - ''
+  PotionEffects:
+  - FAST_DIGGING 600 1
+haste2po:
+  Id: potion
+  Data: 8195
+  Display: '&6Better Mining Potion'
+  Options:
+  Lore:
+  - ''
+  - '...but its something!'
+  - ''
+  PotionEffects:
+  - FAST_DIGGING 300 2

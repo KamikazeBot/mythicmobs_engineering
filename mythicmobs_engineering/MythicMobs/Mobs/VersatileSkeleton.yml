@@ -1,0 +1,18 @@
+vs:
+  Type: skeleton
+  Display: 'Versatile Skeleton'
+  Health: 100
+  Damage: 1
+  Options:
+    FollowRange: 25
+    PreventOtherDrops: true
+    PreventItemPickup: true
+  Skills:
+  - disguise{d=player;<target.name>;asd} @trigger ~onDamaged 1
+#  - effect:particlering{p=snowshovel;a=300;r=5} @self ~onTimer:5
+#  - command{cmd="me &f<mob.name> has been killed by $player"} @trigger ~onDeath 1
+#  - command{cmd="tellraw @a <&lc>text:<&dq>$player killed a <mob.name><&dq><&rc>"} @trigger ~onDeath 1
+#  - setstance{stance=ranged} ~onSpawn 1
+#  - skill{s=eqBow} ~onTimer:20 1
+#  - skill{s=eqSword} ~onTimer:20 1
+#  - skill{s=randomStroll} ~onTimer:120 1

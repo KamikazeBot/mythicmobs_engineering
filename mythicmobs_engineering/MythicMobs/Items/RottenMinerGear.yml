@@ -1,0 +1,30 @@
+RottenMinerPick:
+  Id: 270
+  Display: '&7&oAncient Wooden Pick'
+  Options:
+    Damage: 1
+    Unbreakable: true
+  Enchantments:
+  - DAMAGE_ALL:7
+  - DIG_SPEED:7
+RottenMinerH:
+  Id: 298
+  Options:
+    Color: 160,160,160
+    Unbreakable: true
+RottenMinerC:
+  Id: 299
+  Options:
+    Color: 10,10,10
+    Unbreakable: true
+RottenMinerPickDrop:
+  Id: 270
+  Display: '&7&oAncient Wooden Pick'
+  Lore:
+  - ''
+  - 'Rotten and smelly, makes you'
+  - 'wish you had haste potions instead.'
+  Enchantments:
+  - DAMAGE_ALL:5
+  - DIG_SPEED:7
+  - DURABILITY:1

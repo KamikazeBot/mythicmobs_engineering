@@ -1,0 +1,20 @@
+hedum2:
+  Type: COW
+  Disguise:
+    Type: player
+    Player: '&4&kHEROBRINE' 
+    Skin: Herobrine
+  Display: '&4&kHEROBRINE'
+  Options:
+    PreventOtherDrops: true
+    Despawn: true
+    MovementSpeed: 0.2
+    FollowRange: 30
+  Health: 2000
+  Damage: 0
+  AIGoalSelectors:
+  - 0 clear
+  - 1 MeleeAttack
+  AITargetSelectors:
+  - 0 clear
+  - 1 players

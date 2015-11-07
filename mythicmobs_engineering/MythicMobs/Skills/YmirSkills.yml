@@ -1,0 +1,455 @@
+########################################################
+# Random growl
+ymirgrowl:
+  Skills:
+  - effect:sound{sound=mob.enderdragon.growl;v=2;p=0} @selflocation
+  - delay 5
+  - effect:sound{sound=mob.enderdragon.growl;v=2;p=0.157} @selflocation
+# Random "windy" noise
+ymirwindy:
+  Skills:
+  - effect:sound{sound=mob.wither.idle;v=0.15;p=0.2} @PlayersInRadius{r=12}
+########################################################
+# initial "arena" freezing
+ymiricyradius:
+  Skills:
+  - delay 60
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~8 ~-1 ~8 ~-8 ~5 ~-8 ice 0 replace grass"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~8 ~-1 ~8 ~-8 ~5 ~-8 ice 0 replace dirt"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~8 ~-1 ~8 ~-8 ~5 ~-8 packed_ice 0 replace stone"} @self
+# replace grass, dirt & stone with ice (continuous) + drowning protection
+ymiricyblocks:
+  Skills:
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~4 ~-1 ~4 ~-4 ~0 ~-4 ice 0 replace water"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~4 ~-2 ~4 ~-4 ~2 ~-4 ice 0 replace grass"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~4 ~-2 ~4 ~-4 ~2 ~-4 ice 0 replace dirt"} @self
+  - command{cmd="execute @e[type=Giant] ~ ~ ~ fill ~4 ~-2 ~4 ~-4 ~2 ~-4 packed_ice 0 replace stone"} @self
+########################################################
+# Growling upon taking damage - ascending pitch
+ymirgrowl2:
+  Cooldown: 3
+  Conditions:
+  - stance forcefieldoff
+  Skills:
+  - effect:sound{sound=mob.enderdragon.growl;v=0.775;p=0.0} @PlayersInRadius{r=100} =100%-90%
+  - effect:sound{sound=mob.enderdragon.growl;v=0.8;p=0.05} @PlayersInRadius{r=100} =90%-80%
+  - effect:sound{sound=mob.enderdragon.growl;v=0.825;p=0.1} @PlayersInRadius{r=100} =80%-70%
+  - effect:sound{sound=mob.enderdragon.growl;v=0.85;p=0.15} @PlayersInRadius{r=100} =70%-60%
+  - effect:sound{sound=mob.enderdragon.growl;v=0.875;p=0.2} @PlayersInRadius{r=100} =60%-50%
+  - effect:sound{sound=mob.enderdragon.growl;v=0.9;p=0.25} @PlayersInRadius{r=100} =50%-40%
+  - effect:sound{sound=mob.enderdragon.growl;v=0.925;p=0.3} @PlayersInRadius{r=100} =40%-30%
+  - effect:sound{sound=mob.enderdragon.growl;v=0.95;p=0.35} @PlayersInRadius{r=100} =30%-20%
+  - effect:sound{sound=mob.enderdragon.growl;v=0.975;p=0.4} @PlayersInRadius{r=100} =20%-10%
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0.45} @PlayersInRadius{r=100} =10%-1%
+########################################################
+########################################################
+# lightning @ random location upon damage
+ymirlightning:
+  Cooldown: 2
+  Conditions:
+  - stance forcefieldoff
+  Skills:
+  - summon{m=lrod;a=1;r=7} @self
+  - lightning @MobsInRadius{radius=20;types=lrod}
+  - remove @MobsInRadius{radius=100;types=lrod}
+########################################################
+########################################################
+# Summon protective orbs
+# Parent
+summonorbs:
+  Skills:
+  - skill{s=summonorbs1}
+  - skill{s=summonorbs2}
+  - skill{s=summonorbs3}
+# Phase 1
+summonorbs1:
+  Conditions:
+  - stance forcefieldon1
+  Skills:
+  - delay 60
+  - summon{m=icyorb1;a=1;r=7} @self
+  - lightning @MobsInRadius{radius=100;types=icyorb1}
+  - delay 20
+  - summon{m=icyorb2dummy;a=1;r=7} @self
+  - lightning @MobsInRadius{radius=100;types=icyorb2dummy}
+  - delay 20
+  - summon{m=icyorb3dummy;a=1;r=7} @self
+  - lightning @MobsInRadius{radius=100;types=icyorb3dummy}
+# Phase 2
+summonorbs2:
+  Conditions:
+  - stance forcefieldon2
+  Skills:
+  - delay 60
+  - summon{m=icyorb2;a=1;r=7} @self
+  - lightning @MobsInRadius{radius=100;types=icyorb2}
+  - delay 20
+  - summon{m=icyorb3dummy;a=1;r=7} @self
+  - lightning @MobsInRadius{radius=100;types=icyorb3dummy}
+# Phase 3
+summonorbs3:
+  Conditions:
+  - stance forcefieldon3
+  Skills:
+  - delay 60
+  - summon{m=icyorb3;a=1;r=7} @self
+  - lightning @MobsInRadius{radius=100;types=icyorb3}
+########################################################
+########################################################
+# Display health bar (█ & ▀)
+ymirhealth:
+  Conditions:
+  - stance forcefieldoff
+  Skills:
+  - sendactionmessage{msg="&4▀▀▀▀▀▀▀▀▀▀&7"} @PlayersInRadius{r=100} =100%-90%
+  - sendactionmessage{msg="&4▀▀▀▀▀▀▀▀▀&7▀"} @PlayersInRadius{r=100} =90%-80%
+  - sendactionmessage{msg="&4▀▀▀▀▀▀▀▀&7▀▀"} @PlayersInRadius{r=100} =80%-70%
+  - sendactionmessage{msg="&4▀▀▀▀▀▀▀&7▀▀▀"} @PlayersInRadius{r=100} =70%-60%
+  - sendactionmessage{msg="&4▀▀▀▀▀▀&7▀▀▀▀"} @PlayersInRadius{r=100} =60%-50%
+  - sendactionmessage{msg="&4▀▀▀▀▀&7▀▀▀▀▀"} @PlayersInRadius{r=100} =50%-40%
+  - sendactionmessage{msg="&4▀▀▀▀&7▀▀▀▀▀▀"} @PlayersInRadius{r=100} =40%-30%
+  - sendactionmessage{msg="&4▀▀▀&7▀▀▀▀▀▀▀"} @PlayersInRadius{r=100} =30%-20%
+  - sendactionmessage{msg="&4▀▀&7▀▀▀▀▀▀▀▀"} @PlayersInRadius{r=100} =20%-10%
+  - sendactionmessage{msg="&4▀&7▀▀▀▀▀▀▀▀▀"} @PlayersInRadius{r=100} =10%-1%
+########################################################
+########################################################
+# summon the first wave
+ymirfirstwave:
+  Skills:
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0} @PlayersInRadius{r=100}
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0.157} @PlayersInRadius{r=100}
+  - potion{type=NIGHT_VISION;d=40;l=1} @PlayersInRadius{radius=100}
+  - potion{type=BLINDNESS;d=25;l=1} @PlayersInRadius{radius=100}
+  - effect:sound{sound=random.explode;v=1;p=0} @PlayersInRadius{radius=100}
+  - effect:particles{particle=blockcrack_81;amount=5000;vSpread=4;hSpread=4;Speed=0;yoffset=2} @self
+  - effect:particles{particle=largeexplode;amount=500;vSpread=2;hSpread=2;Speed=0;yoffset=1} @self
+  - summon{m=wdwa;a=3;r=7} @PlayersInRadius{radius=50}
+  - sendactionmessage{msg="&c&oÓr<&sp>Ymis<&sp>holdi,<&sp>var<&sp>jörð<&sp>of<&sp>sköpuð"} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&oÓr<&sp>Ymis<&sp>holdi,<&sp>var<&sp>jörð<&sp>of<&sp>sköpuð"} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&oÓr<&sp>Ymis<&sp>holdi,<&sp>var<&sp>jörð<&sp>of<&sp>sköpuð"} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&oÓr<&sp>Ymis<&sp>holdi,<&sp>var<&sp>jörð<&sp>of<&sp>sköpuð"} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&oÓr<&sp>Ymis<&sp>holdi,<&sp>var<&sp>jörð<&sp>of<&sp>sköpuð"} @PlayersInRadius{r=100}
+########################################################
+# summon the second wave
+ymirsecondwave:
+  Skills:
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0} @PlayersInRadius{r=100}
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0.157} @PlayersInRadius{r=100}
+  - potion{type=NIGHT_VISION;d=40;l=1} @PlayersInRadius{radius=100}
+  - potion{type=BLINDNESS;d=25;l=1} @PlayersInRadius{radius=100}
+  - effect:sound{sound=random.explode;v=1;p=0} @PlayersInRadius{radius=100}
+  - effect:particles{particle=blockcrack_08;amount=5000;vSpread=4;hSpread=4;Speed=0;yoffset=2} @self
+  - effect:particles{particle=largeexplode;amount=500;vSpread=2;hSpread=2;Speed=0;yoffset=1} @self
+  - summon{m=wdwa;a=3;r=7} @PlayersInRadius{radius=50}
+  - summon{m=adwa;a=2;r=9} @PlayersInRadius{radius=50}
+  - sendactionmessage{msg="&c&oen<&sp>ór<&sp>sveita<&sp>sær,<&sp>björg<&sp>ór<&sp>beinum"} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&oen<&sp>ór<&sp>sveita<&sp>sær,<&sp>björg<&sp>ór<&sp>beinum"} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&oen<&sp>ór<&sp>sveita<&sp>sær,<&sp>björg<&sp>ór<&sp>beinum"} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&oen<&sp>ór<&sp>sveita<&sp>sær,<&sp>björg<&sp>ór<&sp>beinum"} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&oen<&sp>ór<&sp>sveita<&sp>sær,<&sp>björg<&sp>ór<&sp>beinum"} @PlayersInRadius{r=100}
+########################################################
+# summon the third wave
+ymirthirdwave:
+  Skills:
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0} @PlayersInRadius{r=100}
+  - effect:sound{sound=mob.enderdragon.growl;v=1;p=0.157} @PlayersInRadius{r=100}
+  - potion{type=NIGHT_VISION;d=40;l=1} @PlayersInRadius{radius=100}
+  - potion{type=BLINDNESS;d=25;l=1} @PlayersInRadius{radius=100}
+  - effect:sound{sound=random.explode;v=1;p=0} @PlayersInRadius{radius=100}
+  - effect:particles{particle=blockcrack_152;amount=5000;vSpread=4;hSpread=4;Speed=0;yoffset=2} @self
+  - effect:particles{particle=largeexplode;amount=500;vSpread=2;hSpread=2;Speed=0;yoffset=1} @self
+  - summon{m=wdwa;a=4;r=17} @PlayersInRadius{radius=50}
+  - summon{m=adwa;a=3;r=13} @PlayersInRadius{radius=50}
+  - summon{m=mdwa;a=1;r=10} @PlayersInRadius{radius=50}
+  - sendactionmessage{msg="&c&obaðmr<&sp>ór<&sp>hári,<&sp>en<&sp>ór<&sp>hausi<&sp>himinn."} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&obaðmr<&sp>ór<&sp>hári,<&sp>en<&sp>ór<&sp>hausi<&sp>himinn."} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&obaðmr<&sp>ór<&sp>hári,<&sp>en<&sp>ór<&sp>hausi<&sp>himinn."} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&obaðmr<&sp>ór<&sp>hári,<&sp>en<&sp>ór<&sp>hausi<&sp>himinn."} @PlayersInRadius{r=100}
+  - delay 10
+  - sendactionmessage{msg="&c&obaðmr<&sp>ór<&sp>hári,<&sp>en<&sp>ór<&sp>hausi<&sp>himinn."} @PlayersInRadius{r=100}
+########################################################
+# forcefield FX + "invincibility" & slowness
+ymirforcefield1:
+  Conditions:
+  - stance forcefieldon1
+  Skills:
+  - effect:particles{particle=instantSpell;amount=200;vSpread=6;hSpread=4;Speed=0;yoffset=0}
+  - potion{type=DAMAGE_RESISTANCE;d=30;l=99}
+  - potion{type=SLOW;d=30;l=99}
+ymirforcefield2:
+  Conditions:
+  - stance forcefieldon2
+  Skills:
+  - effect:particles{particle=instantSpell;amount=175;vSpread=6;hSpread=4;Speed=0;yoffset=0}
+  - potion{type=DAMAGE_RESISTANCE;d=30;l=99}
+  - potion{type=SLOW;d=30;l=99}
+ymirforcefield3:
+  Conditions:
+  - stance forcefieldon3
+  Skills:
+  - effect:particles{particle=instantSpell;amount=150;vSpread=6;hSpread=4;Speed=0;yoffset=0}
+  - potion{type=DAMAGE_RESISTANCE;d=30;l=99}
+  - potion{type=SLOW;d=30;l=99}
+########################################################
+# pushes players; phase 1
+wispforcefield1:
+  Conditions:
+  - playerwithin 12
+  - stance forcefieldon1
+  Skills:
+  - effect:particles{particle=blockcrack_81;amount=200;vSpread=1;hSpread=1;Speed=0;yoffset=1.5} @PlayersInRadius{r=12}
+  - effect:particles{particle=snowshovel;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=0} @PlayersInRadius{r=12}
+  - effect:sound{sound=mob.guardian.curse;p=2} @PlayersInRadius{r=12}
+  - effect:sound{sound=mob.zombie.unfect;p=2} @PlayersInRadius{r=12}
+  - throw{v=18;vy=4} @PlayersInRadius{r=12}
+  - damage{a=1;i=true} @PlayersInRadius{r=12}
+  - potion{type=DAMAGE_RESISTANCE;d=60;l=5} @PlayersInRadius{r=12}
+# pushes players; phase 2
+wispforcefield2:
+  Conditions:
+  - playerwithin 12
+  - stance forcefieldon2
+  Skills:
+  - effect:particles{particle=blockcrack_09;amount=175;vSpread=1;hSpread=1;Speed=0;yoffset=1.5} @PlayersInRadius{r=12}
+  - effect:particles{particle=snowshovel;amount=20;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=0} @PlayersInRadius{r=12}
+  - effect:sound{sound=mob.guardian.curse;p=2} @PlayersInRadius{r=12}
+  - effect:sound{sound=mob.zombie.unfect;p=2} @PlayersInRadius{r=12}
+  - throw{v=18;vy=4} @PlayersInRadius{r=12}
+  - damage{a=1;i=true} @PlayersInRadius{r=12}
+  - potion{type=DAMAGE_RESISTANCE;d=60;l=5} @PlayersInRadius{r=12}
+# pushes players; phase 3
+wispforcefield3:
+  Conditions:
+  - playerwithin 12
+  - stance forcefieldon3
+  Skills:
+  - effect:particles{particle=blockcrack_152;amount=150;vSpread=1;hSpread=1;Speed=0;yoffset=1.5} @PlayersInRadius{r=12}
+  - effect:particles{particle=snowshovel;amount=15;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=0} @PlayersInRadius{r=12}
+  - effect:sound{sound=mob.guardian.curse;p=2} @PlayersInRadius{r=12}
+  - effect:sound{sound=mob.zombie.unfect;p=2} @PlayersInRadius{r=12}
+  - throw{v=18;vy=4} @PlayersInRadius{r=12}
+  - damage{a=1;i=true} @PlayersInRadius{r=12}
+  - potion{type=DAMAGE_RESISTANCE;d=60;l=5} @PlayersInRadius{r=12}
+########################################################
+########################################################
+ymirrandomiceattack:
+  Skills:
+  - skill{s=ymirrandomiceattack1} 0.075
+  - skill{s=ymirrandomiceattack2} 0.10
+  - skill{s=ymirrandomiceattack3} 0.125
+ymirrandomiceattack1:
+  Cooldown: 60
+  Conditions:
+  - stance forcefieldon1
+  Skills:
+  - skill{s=ymiriceattack2}
+ymirrandomiceattack2:
+  Cooldown: 45
+  Conditions:
+  - stance forcefieldon2
+  Skills:
+  - skill{s=ymiriceattack2}
+ymirrandomiceattack3:
+  Cooldown: 30
+  Conditions:
+  - stance forcefieldon3
+  Skills:
+  - skill{s=ymiriceattack2}
+########################################################
+########################################################
+# Death animation
+ymirdeath:
+  Skills:
+  - sendactionmessage{msg="&7▀▀▀▀▀▀▀▀▀▀"} @PlayersInRadius{r=100}
+  - weather{type=clear}
+  - equip{i=Dummy:4} @Self
+  - equip{i=Dummy:3} @Self
+  - equip{i=Dummy:2} @Self
+  - equip{i=Dummy:1} @Self
+  - equip{i=Dummy:0} @Self
+  - summon{m=deadymir;a=1;r=0} @self
+  - remove @self
+# phase 2 using dummy
+ymirdeath2:
+  Skills:
+  - effect:sound{sound=portal.travel;v=1.5;p=0} @PlayersInRadius{radius=100}
+  - effect:sound{sound=mob.enderdragon.growl;v=1.25;p=0} @PlayersInRadius{r=100}
+  - effect:sound{sound=mob.enderdragon.growl;v=1.5;p=0.157} @PlayersInRadius{r=100}
+  - effect:sound{sound=portal.trigger;v=2;p=0} @PlayersInRadius{radius=100}
+#  - effect:sound{sound=mob.wither.spawn;v=1;p=0.5} @PlayersInRadius{radius=100}
+  - delay 20
+  - effect:sound{sound=mob.zombie.unfect;v=1;p=0} @PlayersInRadius{radius=50}
+  - effect:sound{sound=mob.zombie.unfect;v=1;p=0.05} @PlayersInRadius{radius=50}
+  - effect:sound{sound=mob.zombie.unfect;v=1;p=0.1} @PlayersInRadius{radius=50}
+  - delay 40
+  - effect:sound{sound=mob.wither.spawn;v=1;p=0.25} @PlayersInRadius{radius=100}
+  - effect:particles{particle=instantSpell;amount=400;vSpread=6;hSpread=4;Speed=0;yoffset=0} @self
+  - throw{v=13;vy=7} @PlayersInRadius{r=12}
+  - potion{type=DAMAGE_RESISTANCE;d=60;l=5} @PlayersInRadius{r=12}
+  - effect:sound{sound=random.explode;v=1;p=0.5} @PlayersInRadius{radius=100}
+  - effect:particles{particle=explode;amount=400;vSpread=2;hSpread=2;Speed=0;yoffset=1} @self
+  - effect:particles{particle=blockcrack_57;amount=150;vSpread=3;hSpread=4;Speed=0;yoffset=1} @self
+  - equip{i=Dummy:1}
+  - delay 20
+  - effect:sound{sound=mob.wither.spawn;v=1;p=0} @PlayersInRadius{radius=100}
+  - effect:particles{particle=instantSpell;amount=400;vSpread=6;hSpread=4;Speed=0;yoffset=0} @self
+  - throw{v=13;vy=7} @PlayersInRadius{r=12}
+  - potion{type=DAMAGE_RESISTANCE;d=60;l=5} @PlayersInRadius{r=12}
+  - effect:sound{sound=random.explode;v=1;p=0.5} @PlayersInRadius{radius=100}
+  - effect:particles{particle=explode;amount=500;vSpread=2;hSpread=4;Speed=5;yoffset=3.5} @self
+  - effect:particles{particle=blockcrack_57;amount=300;vSpread=4;hSpread=5;Speed=0;yoffset=3.5} @self
+  - equip{i=Dummy:2}
+  - delay 20
+  - effect:particles{particle=instantSpell;amount=400;vSpread=6;hSpread=4;Speed=0;yoffset=0} @self
+  - throw{v=13;vy=7} @PlayersInRadius{r=12}
+  - potion{type=DAMAGE_RESISTANCE;d=60;l=5} @PlayersInRadius{r=12}
+  - effect:sound{sound=random.explode;v=1;p=0.5} @PlayersInRadius{radius=100}
+  - effect:particles{particle=explode;amount=1000;vSpread=5;hSpread=7;Speed=0;yoffset=6} @self
+  - effect:particles{particle=blockcrack_57;amount=600;vSpread=5;hSpread=7;Speed=0;yoffset=6} @self
+  - equip{i=Dummy:3}
+  - delay 5
+  - summon{m=lootcow;a=1;r=0} @self
+  - summon{m=lootcow2;a=15;r=5} @PlayersInRadius{radius=50}
+  - delay 35
+  - effect:particles{particle=instantSpell;amount=400;vSpread=6;hSpread=4;Speed=0;yoffset=0} @self
+  - throw{v=13;vy=7} @PlayersInRadius{r=12}
+  - potion{type=DAMAGE_RESISTANCE;d=60;l=5} @PlayersInRadius{r=12}
+  - effect:sound{sound=random.explode;v=1;p=0} @PlayersInRadius{radius=100}
+  - effect:sound{sound=random.explode;v=1;p=0.25} @PlayersInRadius{radius=100}
+  - effect:sound{sound=random.explode;v=1;p=0.5} @PlayersInRadius{radius=100}
+  - potion{type=BLINDNESS;d=20;l=0} @PlayersInRadius{radius=100}
+  - effect:particles{particle=explode;amount=600;vSpread=2;hSpread=4.5;Speed=5;yoffset=11.5} @self
+  - effect:particles{particle=blockcrack_57;amount=350;vSpread=5;hSpread=5;Speed=0;yoffset=11.5} @self
+  - equip{i=Dummy:4}
+  - equip{i=Dummy:0}
+  - remove @self
+lootcowsuicide:
+  Skills:
+  - delay 20
+  - suicide @self
+########################################################
+########################################################
+## Battle skills
+# jump
+ymirjump:
+  Cooldown: 5
+  Conditions:
+  - stance forcefieldoff
+  Skills:
+  - effect:explosion @self
+  - effect:particles{particle=explode;amount=400;vSpread=1.5;hSpread=1.5;Speed=0;yoffset=2} @self
+  - leap{v=50;noise=50} @target
+########################################################
+# lightning attack
+ymirlightningattack:
+  Cooldown: 5
+  Conditions:
+  - stance forcefieldoff
+  Skills:
+  - summon{m=lrod2;a=1;r=0} @trigger
+  - effect:particles{particle=blockcrack_174;amount=500;vSpread=0.25;hSpread=0.25;Speed=0;yoffset=11.5} @self
+  - effect:sound{sound=random.fizz;v=1;p=0} @PlayersInRadius{r=100}
+  - effect:particles{particle=blockcrack_174;amount=750;vSpread=0;hSpread=0.5;Speed=0;yoffset=2} @MobsInRadius{radius=100;types=lrod2}
+  - delay 10
+  - effect:particles{particle=blockcrack_174;amount=500;vSpread=0.75;hSpread=0.5;Speed=0;yoffset=11.5} @self
+  - effect:sound{sound=random.fizz;v=1;p=0.5} @PlayersInRadius{r=100}
+  - effect:particles{particle=blockcrack_174;amount=100;vSpread=0;hSpread=0;Speed=0;yoffset=1} @MobsInRadius{radius=100;types=lrod2}
+  - delay 10
+  - effect:particles{particle=blockcrack_174;amount=500;vSpread=1.25;hSpread=0.75;Speed=0;yoffset=11.5} @self
+  - effect:particles{particle=blockcrack_174;amount=100;vSpread=0;hSpread=0;Speed=0;yoffset=1} @MobsInRadius{radius=100;types=lrod2}
+  - delay 10
+  - lightning @MobsInRadius{radius=100;types=lrod2}
+  - lightning @MobsInRadius{radius=100;types=lrod2}
+  - lightning @MobsInRadius{radius=100;types=lrod2}
+  - damage{a=10;i=false} @MobsInRadius{radius=100;types=lrod2}
+########################################################
+### ice projectile + ice prison
+## combat version
+# parent
+ymiriceattack:
+  Conditions:
+  - stance forcefieldoff
+  Skills:
+  - projectile{onTick=ymiriceattackFX;onHit=ymiriceprison;v=10;i=1;hR=1;vR=1;syo=10} @PlayersInRadius{r=100}
+# sub
+ymiriceattackFX:
+  Skills:
+  - effect:particles{p=blockcrack_174;amount=20;speed=0;hR=0.2;vR=0.2} @origin
+  - effect:sound{sound=step.snow;p=2} @origin
+ymiriceprison:
+  Skills:
+  - damage{a=6;i=true}
+  - prison{type=ICE;duration=100;breakable=true}
+## ambient version
+# parent
+ymiriceattack2:
+  Conditions:
+  Skills:
+  - projectile{onTick=ymiriceattackFX;onHit=ymiriceprison;v=10;i=1;hR=1;vR=1;syo=10} @PlayersInRadius{r=100}
+# sub
+ymiriceattackFX:
+  Skills:
+  - effect:particles{p=blockcrack_174;amount=20;speed=0;hR=0.2;vR=0.2} @origin
+  - effect:sound{sound=step.snow;p=2} @origin
+ymiriceprison:
+  Skills:
+  - damage{a=6;i=false}
+  - prison{type=ICE;duration=100;breakable=true}
+  - effect:sound{sound=step.snow;v=2;p=1}
+########################################################
+## mad smite
+# parent
+ymirmadsmite:
+  Conditions:
+  - stance forcefieldoff
+  Skills:
+  - projectile{onTick=ymirmadsmiteFX;onHit=ymirmadsmiteHIT;hs=true;i=5;v=15} @trigger
+# sub
+ymirmadsmiteFX:
+  Skills:
+  - effect:lightning @origin
+  - damage{a=1;i=true} @PlayersNearOrigin
+  - throw{v=5;vy=2} @PlayersNearOrigin
+ymirmadsmiteHIT:
+  Skills:
+  - effect:lightning @origin
+  - effect:explosion @origin
+  - damage{a=3;i=true} @PlayersNearOrigin
+  - throw{v=10;vy=3} @PlayersNearOrigin
+########################################################
+## slowing melee attack
+ymirslowice:
+  Conditions:
+  - stance forcefieldoff
+  Skills:
+  - potion{type=SLOW;d=60;l=1} @trigger
+  - effect:particles{particle=blockcrack_174;amount=20;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - effect:particles{particle=snowshovel;amount=10;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - delay 10
+  - effect:particles{particle=blockcrack_174;amount=20;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - effect:particles{particle=snowshovel;amount=10;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - delay 10
+  - effect:particles{particle=blockcrack_174;amount=20;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - effect:particles{particle=snowshovel;amount=10;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - delay 10
+  - effect:particles{particle=blockcrack_174;amount=20;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - effect:particles{particle=snowshovel;amount=10;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - delay 10
+  - effect:particles{particle=blockcrack_174;amount=20;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - effect:particles{particle=snowshovel;amount=10;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - delay 10
+  - effect:particles{particle=blockcrack_174;amount=20;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - effect:particles{particle=snowshovel;amount=10;vSpread=0;hSpread=0.1;Speed=0;yoffset=1.5} @trigger
+  - delay 10
+########################################################

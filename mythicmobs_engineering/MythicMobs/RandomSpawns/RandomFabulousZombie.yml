@@ -1,0 +1,8 @@
+RandomFabulousZombie:
+  MobType: gz1
+  Worlds: world
+  Chance: 0.0005
+  Priority: 1
+  Action: replace
+  Conditions:
+  - outside true

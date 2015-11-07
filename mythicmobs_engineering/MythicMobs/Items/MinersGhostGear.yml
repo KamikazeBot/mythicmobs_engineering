@@ -1,0 +1,27 @@
+MinersGhostPick:
+  Id: 274
+  Display: '&7Astral Pick'
+  Options:
+    Damage: 1
+    Unbreakable: true
+  Enchantments:
+  - DAMAGE_ALL:6
+  - DIG_SPEED:7
+MinersGhostH:
+  Id: 302
+  Options:
+    Unbreakable: true
+MinersGhostC:
+  Id: 303
+  Options:
+    Unbreakable: true
+MinersGhostPickDrop:
+  Id: 274
+  Display: '&7Astral Pick'
+  Lore:
+  - ''
+  - 'A weird see-through pick,'
+  - 'has an odd scent to it.'
+  Enchantments:
+  - DAMAGE_ALL:5
+  - DIG_SPEED:7

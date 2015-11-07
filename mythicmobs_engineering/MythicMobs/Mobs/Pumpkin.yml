@@ -1,0 +1,88 @@
+fp:
+  Type: ZOMBIE
+  Health: 10
+  Damage: 1
+  Options:
+    Silent: true
+    PreventOtherDrops: true
+    KnockbackResistance: 100
+  DamageModifiers:
+  - FIRE_TICK 0
+  - FIRE 0
+  - LAVA 0
+  - DROWNING 0
+  Skills:
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onSpawn 1
+  - equip{i=jackolantern:4} @self ~onSpawn 1
+  - equip{i=Dummy:3} @self ~onSpawn 1
+  - equip{i=Dummy:2} @self ~onSpawn 1
+  - equip{i=Dummy:1} @self ~onSpawn 1
+  - equip{i=Dummy:0} @self ~onSpawn 1
+  - mount{m=fpm} @self ~onSpawn 1
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onTimer:600 1
+  - effect:particles{particle=smoke;amount=5;vSpread=0.3;hSpread=0.3;Speed=0;yoffset=1} @self ~onTimer:5 1
+  - effect:particles{particle=mobSpell;amount=2;vSpread=0.3;hSpread=0.3;Speed=0.5;yoffset=1} @self ~onTimer:10 0.9
+  - effect:explosion @self ~onTimer:200 0.05
+  - skill{s=fpidlenoise} ~onTimer:60 0.1
+  - skill{s=shypdeath} ~onDeath
+  AIGoalSelectors:
+  - 0 LookAtPlayers
+  AITargetSelectors:
+  - 0 Players
+  Drops:
+  - shypDrops
+fpm:
+  Type: bat
+  Options:
+    Silent: true
+  Skills:
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onSpawn 1
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onTimer:600 1
+shyp:
+  Type: VILLAGER
+  Health: 1
+  Damage: 1
+  Options:
+    Age: -1
+    AgeLock: true
+    Silent: true
+    PreventOtherDrops: true
+    KnockbackResistance: 100
+  DamageModifiers:
+  - FIRE_TICK 0
+  - DROWNING 0
+  - FIRE 0
+  - LAVA 0
+  Skills:
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onSpawn 1
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onTimer:600 1
+  - equip{i=jackolantern:4} @self ~onSpawn 1
+  - equip{i=Dummy:3} @self ~onSpawn 1
+  - equip{i=Dummy:2} @self ~onSpawn 1
+  - equip{i=Dummy:1} @self ~onSpawn 1
+  - equip{i=Dummy:0} @self ~onSpawn 1
+  - mount{m=shypm} @self ~onSpawn
+  - skill{s=fpidlenoise} ~onTimer:60 0.3
+  - effect:particles{particle=smoke;amount=1;vSpread=0.3;hSpread=0.3;Speed=0;yoffset=1} @self ~onTimer:10 0.9
+  - effect:particles{particle=mobSpell;amount=1;vSpread=0.3;hSpread=0.3;Speed=0.5;yoffset=1} @self ~onTimer:20 0.9
+  - skill{s=shypdeath} ~onDeath
+  AIGoalSelectors:
+  - 0 clear
+  - 1 LookAtPlayers
+  AITargetSelectors:
+  - 0 clear
+  Drops:
+  - shypDrops
+shypm:
+  Type: SILVERFISH
+  Options:
+    Silent: true
+    PreventBlockInfection: true
+    MovementSpeed: 0.0
+  Skills:
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onSpawn 1
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onTimer:600 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear

@@ -1,0 +1,78 @@
+# Slowness in sunlight
+sunslow:
+  Cooldown: 5
+  Conditions:
+  - stance norage
+  - outside true
+  - lightlevelabove 10
+  Skills:
+  - potion{t=SLOW;d=100;l=2} @self
+# Change weapon & speed <50 % health
+ragemode:
+  Conditions:
+  - stance norage
+  Skills:
+  - GCD{ticks=60}
+  - skill{s=summonymirp1}
+  - setstance{stance=raged} @self
+  - potion{t=SLOW;d=60;l=10} @self
+  - summon{m=dwcreep;a=2;r=0} @self
+  - effect:particles{particle=depthsuspend;amount=150;vSpread=0.5;hSpread=3;Speed=1;yoffset=1} @self
+  - effect:particles{particle=reddust;amount=250;vSpread=0.5;hSpread=2;Speed=0;yoffset=1} @self
+  - effect:sound{sound=mob.zombie.remedy;p=0} @selflocation
+  - throw{v=10;vy=1} @PlayersInRadius{r=7}
+  - effect:sound{sound=mob.zombie.hurt;p=0} @selflocation
+  - delay 20
+  - equip{item=Dummy:0} @self
+  - delay 20
+  - effect:sound{sound=mob.horse.armor;p=0} @selflocation
+  - equip{item=DwarfenDiamondPick:0} @self
+# Poisonous attack
+poisonpick:
+  Conditions:
+  - stance raged
+  Skills:
+  - potion{t=POISON;d=100;l=1} @target
+# Spawn stones and charge
+stonecharge:
+  Cooldown: 7
+  Conditions:
+  - stance raged
+  Skills:
+  - potion{type=SLOW;d=40;l=5} @self
+  - effect:sound{sound=mob.zombie.unfect;p=0} @selflocation
+  - delay 30
+  - summon{m=dwmin;a=1;r=5} @target
+  - delay 3
+  - summon{m=dwmin;a=1;r=5} @target
+  - delay 3
+  - summon{m=dwmin;a=1;r=5} @target
+  - delay 1
+  - summon{m=dwmin;a=1;r=5} @target
+  - delay 2
+  - summon{m=dwmin;a=1;r=5} @target
+  - potion{type=SPEED;d=30;l=4} @self
+  - effect:sound{sound=mob.zombie.remedy;p=2} @selflocation
+  - effect:particles{particle=spell;amount=25;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self
+## Sound effects
+# Hit >50 % health
+dwadam1:
+  Conditions:
+  - stance norage
+  Skills:
+  - effect:sound{sound=mob.zombie.hurt;p=0.7} @selflocation
+  - effect:sound{sound=random.break;p=0} @selflocation
+# Hit <50 % health
+dwadam2:
+  Conditions:
+  - stance raged
+  Skills:
+  - effect:sound{sound=mob.zombie.hurt;p=0} @selflocation
+  - effect:sound{sound=random.break;p=0} @selflocation
+# Death
+dwadeath:
+  Skills:
+  - effect:particles{particle=depthsuspend;amount=500;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - effect:particles{particle=instantSpell;amount=250;vSpread=0.5;hSpread=1.5;Speed=0;yoffset=1} @self
+  - disguise{d=zombie} @self
+  - effect:sound{sound=mob.zombie.death;p=0} @selflocation

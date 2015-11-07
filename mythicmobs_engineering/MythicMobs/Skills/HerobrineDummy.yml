@@ -1,0 +1,54 @@
+### stare and vanish
+herobrinevanish:
+  Cooldown: 140
+  Skills:
+  - effect:sound{sound=mob.endermen.stare;p=0} @PlayersInRadius{radius=15}
+  - potion{type=SLOW;d=1200;l=50} @self
+  - potion{type=NIGHT_VISION;d=140;l=1} @PlayersInRadius{radius=15}
+  - potion{type=CONFUSION;d=200;l=1} @PlayersInRadius{radius=15}
+  - delay 100
+  - effect:particles{particle=depthsuspend;amount=50;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - delay 10
+  - effect:particles{particle=depthsuspend;amount=60;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - effect:particles{particle=instantSpell;amount=50;vSpread=0.5;hSpread=1.5;Speed=0;yoffset=1} @self
+  - delay 5
+  - effect:particles{particle=depthsuspend;amount=60;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - effect:particles{particle=instantSpell;amount=50;vSpread=0.5;hSpread=1.5;Speed=0;yoffset=1} @self
+  - effect:flames @self
+  - potion{type=BLINDNESS;d=25;l=1} @PlayersInRadius{radius=15}
+  - delay 10
+  - effect:particles{particle=depthsuspend;amount=50;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - effect:flames @self
+  - delay 15
+  - effect:lightning @self
+  - effect:particles{particle=depthsuspend;amount=500;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - effect:particles{particle=instantSpell;amount=250;vSpread=0.5;hSpread=1.5;Speed=0;yoffset=1} @self
+  - remove @self
+
+### hedum3 removal
+removeself:
+  Skills:
+  - delay 220
+  - remove @self
+
+### freeze, pull, vanish
+herovanish2:
+  Cooldown: 140
+  Skills:
+  - effect:sound{sound=mob.endermen.stare;p=0} @PlayersInRadius{radius=25}
+  - potion{type=SLOW;d=250;l=50} @self
+#  - potion{type=SLOW;d=230;l=50} @PlayersInRadius{radius=25
+  - effect:particles{particle=depthsuspend;amount=500;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - effect:particles{particle=depthsuspend;amount=500;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @trigger
+  - potion{type=BLINDNESS;d=10;l=1}
+  - delay 10
+  - summon{m=hedum3;a=1;r=0} @Self
+  - effect:particles{particle=depthsuspend;amount=500;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - effect:particles{particle=instantSpell;amount=250;vSpread=0.5;hSpread=1.5;Speed=0;yoffset=1} @self
+  - potion{type=BLINDNESS;d=240;l=2} @PlayersInRadius{radius=25}
+  - potion{type=CONFUSION;d=240;l=1} @PlayersInRadius{radius=25}
+  - delay 200
+  - effect:lightning @self
+  - effect:particles{particle=depthsuspend;amount=500;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - effect:particles{particle=instantSpell;amount=250;vSpread=0.5;hSpread=1.5;Speed=0;yoffset=1} @self
+  - remove @self

@@ -1,0 +1,34 @@
+mingho:
+  Type: zombie_villager
+  Display: '&7Miners Ghost'
+  Health: 1
+  Damage: 0
+  Options:
+    PreventOtherDrops: true
+    PreventItemPickup: true
+    Despawn: true
+    MovementSpeed: 0.34
+    ReinforcementsChance: 0
+    Silent: true
+  Equipment:
+  - MinersGhostH:4
+  - MinersGhostC:3
+  - Dummy:2
+  - Dummy:1
+  - MinersGhostPick:0
+  DamageModifiers:
+  -
+  Skills:
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1 
+#  - damage{a=2;i=true} @target ~onAttack 1
+#  - skill{s=fatinfect} ~onAttack 1 
+#  - skill{s=spawnsilverfish} ~onDamaged 0.3
+#  - effect:particles{particle=depthsuspend;amount=25;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self ~onTimer:60 0.5
+#  - effect:particles{particle=depthsuspend;amount=50;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self ~onDamaged 1
+#  - effect:particles{particle=depthsuspend;amount=100;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self ~onDeath 1
+  Drops:
+  - minghodrops
+  AITargetSelectors:
+  - 0 clear
+  - 1 attacker
+  - 2 players

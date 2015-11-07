@@ -1,0 +1,95 @@
+dwa:
+  Type: Pig_zombie
+  Display: '&7Dwarf'
+  Health: 100
+  AIGoalSelectors:
+  - 0 clear
+  - 1 MeleeAttack
+  - 2 RandomStroll
+  - 3 LookAtPlayers
+  - 4 MoveTowardsTarget
+  - 5 AvoidArrows
+  AITargetSelectors:
+  - 0 ThreatHolder
+  - 1 Attacker
+  - 2 hurtbytarget
+  Options:
+    Silent: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    KnockbackResistance: 0.5
+    PreventItemPickup: true
+    ReinforcementsChance: 0
+  DamageModifiers:
+  - ENTITY_EXPLOSION 0
+  Modules:
+    ThreatTable: true
+  Disguise:
+    Type: player
+    Player: '&7Dwarf'
+    Skin: Mattyyy
+  Equipment:
+  - DwarfenHelmet:4
+  - DwarfenChestplate:3
+  - DwarfenPants:2
+  - DwarfenShoes:1
+  - NoRageIronPick:0
+  Skills:
+  - setstance{stance=norage} ~onSpawn 1
+  - throw{v=15;vy=10} @Target ~onAttack 0.25
+  - skill{s=sunslow} ~onTimer:100 1
+  - skill{s=ragemode} ~onDamaged =50%-0% 1
+  - skill{s=stonecharge} ~onDamaged 0.25
+  - skill{s=posionpick} ~onAttack 0.25
+  - skill{s=dwadam1} ~onDamaged 1
+  - skill{s=dwadam2} ~onDamaged 1
+  - skill{s=dwadeath} ~onDeath 1
+  - effect:particles{particle=reddust;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1} @self ~onTimer:20 =50%-0% 1
+  - command{cmd="scoreboard players add $player dwakills 1"} @trigger ~onDeath
+  Drops:
+  - dwarfendrops
+###
+dwmin:
+  Type: Endermite
+  Display: '&7Stone Block'
+  Health: 10
+  Damage: 7
+  Options:
+    Silent: true
+    MovementSpeed: 0.3
+    PreventOtherDrops: true
+    Size: 1
+  Skills:
+  - disguise{d=block:1} @self ~onSpawn 1
+  - effect:sound{sound=step.stone;p=2} @selflocation ~onSpawn 1
+  - effect:sound{sound=step.stone;p=1} @selflocation ~onDamaged 1
+  - effect:sound{sound=dig.stone;p=0} @selflocation ~onDamaged 1
+###
+dwcreep:
+  Type: Creeper
+  Health: 1000
+  Options:
+    MovementSpeed: 0
+    PreventOtherDrops: true
+    FuseTicks: 1
+  DamageModifiers:
+  - ENTITY_EXPLOSION 0
+  - ENTITY_ATTACK 0
+  AITargetSelectors:
+  - 1 Monsters
+  Skills:
+  - potion{type=INVISIBILITY;d=999999;l=1} @self ~onSpawn 1
+### Cosmetic Diamond Block mob
+dblock:
+  Type: COW
+  Health: 2000
+  Options:
+    Silent: true
+    KnockbackResistance: 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - disguise{d=block:diamond_block} @self ~onSpawn 1
+  - skill{s=summonymirp2} ~onSpawn 1

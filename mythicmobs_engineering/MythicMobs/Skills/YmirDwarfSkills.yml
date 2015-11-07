@@ -1,0 +1,140 @@
+##################################################################################
+## Sound effects
+# Hit >50 % health
+wdwadam1:
+  Conditions:
+  - stance norage
+  Skills:
+  - effect:sound{sound=mob.zombie.hurt;p=0.7} @selflocation
+  - effect:sound{sound=random.break;p=0} @selflocation
+# Hit <50 % health
+wdwadam2:
+  Conditions:
+  - stance raged
+  Skills:
+  - effect:sound{sound=mob.zombie.hurt;p=0} @selflocation
+  - effect:sound{sound=random.break;p=0} @selflocation
+##################################################################################
+# Death
+wdwadeath:
+  Skills:
+  - effect:particles{particle=depthsuspend;amount=500;vSpread=0.5;hSpread=0.75;Speed=0;yoffset=1} @self
+  - disguise{d=zombie} @self
+  - effect:sound{sound=mob.zombie.death;p=0} @selflocation
+##################################################################################
+# Change weapon & speed <50 % health (one time event)
+wdwaragemode:
+  Conditions:
+  - stance norage
+  Skills:
+  - setstance{stance=raged} @self
+  - effect:particles{particle=depthsuspend;amount=150;vSpread=0.5;hSpread=3;Speed=1;yoffset=1} @self
+  - effect:particles{particle=reddust;amount=250;vSpread=0.5;hSpread=2;Speed=0;yoffset=1} @self
+  - potion{t=SPEED;d=600;l=1} @self 0.5
+  - potion{t=INCREASE_DAMAGE;d=600;l=1} @self 0.3
+  - effect:sound{sound=mob.zombie.remedy;p=0} @selflocation
+  - throw{v=10;vy=1} @PlayersInRadius{r=7}
+  - effect:sound{sound=mob.zombie.hurt;p=0} @selflocation
+##################################################################################
+## Ranged attacks
+shootr20:
+  Conditions:
+  - targetwithin 20
+  - targetnotwithin 15
+  Skills:
+  - shoot{type=arrow;damage=3;maxdistance=25;velocity=2} @target
+shootr15:
+  Conditions:
+  - targetwithin 15
+  - targetnotwithin 10
+  Skills:
+  - shoot{type=arrow;damage=4;maxdistance=25;velocity=2} @target
+shootr10:
+  Conditions:
+  - targetwithin 10
+  - targetnotwithin 7
+  Skills:
+  - shoot{type=arrow;damage=5;maxdistance=25;velocity=2} @target
+shootr7:
+  Conditions:
+  - targetwithin 7
+  - targetnotwithin 5
+  Skills:
+  - shoot{type=arrow;damage=6;maxdistance=25;velocity=2} @target
+shootr5:
+  Conditions:
+  - targetwithin 5
+  - targetnotwithin 3
+  Skills:
+  - shoot{type=arrow;damage=7;maxdistance=10;velocity=1} @target
+shootr3:
+  Conditions:
+  - targetwithin 3
+  Skills:
+  - shoot{type=arrow;damage=8;maxdistance=10;velocity=1} @target
+adwafreeze:
+  Conditions:
+  - targetwithin 6
+  Skills:
+  - potion{type=SLOW;d=30;l=20} @self
+##################################################################################
+# Magical Dwarf Buffs (@ other dwarfs)
+mdwabuff:
+  Cooldown: 3
+  Skills:
+  - potion{type=HARM;d=100;l=0} @MobsInRadius{radius=5;types=wdwa,adwa,dwa}
+  - potion{type=DAMAGE_RESISTANCE;d=100;l=2} @MobsInRadius{radius=5;types=wdwa,adwa,dwa}
+  - effect:particles{particle=enchantmenttable;amount=100;vSpread=2.5;hSpread=2.5;Speed=0;yoffset=1} @self
+##################################################################################
+# Magical Dwarf Debuffs (@ players)
+mdwadebuff:
+  Skills:
+  - skill{s=mdwadebuff1blind} 0.2
+  - skill{s=mdwadebuff1poison} 0.4
+  - skill{s=mdwadebuff1slow} 0.2
+  - skill{s=mdwadebuff2hunger} 0.1
+  - skill{s=mdwadebuff2wither} 0.05
+### common debuffs
+mdwadebuff1blind:
+  Cooldown: 3
+  Conditions:
+  - targetwithin 2
+  Skills:
+  - potion{type=BLINDNESS;d=20;l=0} @PlayersInRadius{radius=3}
+  - effect:sound{sound=random.anvil_land;v=0.25;p=0.2} @selflocation
+  - effect:particles{particle=blockcrack_90;amount=50;vSpread=0;hSpread=0;Speed=2;yOffset=1.5} @PlayersInRadius{radius=3}
+mdwadebuff1poison:
+  Cooldown: 3
+  Conditions:
+  - targetwithin 2
+  Skills:
+  - potion{type=POISON;d=60;l=0} @PlayersInRadius{radius=3}
+  - effect:sound{sound=random.anvil_land;v=0.25;p=0.2} @selflocation
+  - effect:particles{particle=blockcrack_90;amount=50;vSpread=0;hSpread=0;Speed=2;yOffset=1.5} @PlayersInRadius{radius=3}
+mdwadebuff1slow:
+  Cooldown: 3
+  Conditions:
+  - targetwithin 2
+  Skills:
+  - potion{type=SLOW;d=60;l=0} @PlayersInRadius{radius=3}
+  - effect:sound{sound=random.anvil_land;v=0.25;p=0.2} @selflocation
+  - effect:particles{particle=blockcrack_90;amount=50;vSpread=0;hSpread=0;Speed=2;yOffset=1.5} @PlayersInRadius{radius=3}
+###################################
+### rare debuffs
+mdwadebuff2hunger:
+  Cooldown: 5
+  Conditions:
+  - targetwithin 2
+  Skills:
+  - potion{type=HUNGER;d=60;l=0} @PlayersInRadius{radius=3}
+  - effect:sound{sound=random.anvil_use;p=0} @selflocation
+  - effect:particles{particle=blockcrack_90;amount=100;vSpread=0;hSpread=0;Speed=2;yOffset=1.5} @PlayersInRadius{radius=3}
+mdwadebuff2wither:
+  Cooldown: 5
+  Conditions:
+  - targetwithin 2
+  Skills:
+  - potion{type=WITHER;d=60;l=0} @PlayersInRadius{radius=3}
+  - effect:sound{sound=random.anvil_use;p=0} @selflocation
+  - effect:particles{particle=blockcrack_90;amount=100;vSpread=0;hSpread=0;Speed=2;yOffset=1.5} @PlayersInRadius{radius=3}
+##################################################################################

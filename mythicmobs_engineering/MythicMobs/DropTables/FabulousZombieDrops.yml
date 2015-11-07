@@ -1,0 +1,13 @@
+gz1drops:
+  Drops:
+  - PinkH 1 0.5
+  - PinkC 1 0.5
+  - PinkL 1 0.5
+  - PinkF 1 0.5
+  - exp 500
+  DropsPerLevel:
+  - exp 10
+gz1mdrops:
+  Drops:
+  - 351:9 0-2 1
+  - exp 10

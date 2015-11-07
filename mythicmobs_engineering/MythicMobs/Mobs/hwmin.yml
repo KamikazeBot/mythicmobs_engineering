@@ -1,0 +1,76 @@
+hwm:
+  Type: WOLF
+  Display: '&6Pumpkin'
+  Damage: 5
+  Faction: hwm
+  Options:
+    Despawn: false
+    Silent: true
+    PreventLeashing: false
+    Tameable: false
+    PreventRenaming: true
+    PreventItemPickup: true
+    PreventOtherDrops: true
+  Disguise:
+    Type: babyzombie
+    ShowName: false
+  Equipment:
+  - jackolantern:4
+  DamageModifiers:
+  - ENTITY_ATTACK 0.2
+  - PROJECTILE 0.25
+  - MAGIC 0.3
+  - FIRE 0
+  - FIRE_TICK 0
+  - LAVA 0
+  AITargetSelectors:
+  - 0 OwnerTarget
+  - 1 OwnerAttacker
+  - 2 Attacker
+  - 3 specificfaction bat
+  Skills:
+  - skill{s=hwm_initiation} @self ~onSpawn
+  - skill{s=hwm_redisguise} @self ~onInteract
+  - skill{s=hwm_taming_denial} @self ~onEnterCombat
+  - skill{s=hwm_taming_enabler} @self ~onDropCombat
+  - skill{s=hwm_taming_nope_engine} @self ~onTimer:5
+  - skill{s=hwm_taming_nope} @self ~onInteract
+  - skill{s=hwm_taming} @self ~onInteract
+  - skill{s=hwm_info} @self ~onInteract
+  - skill{s=hwm_idle_vfx} @self ~onTimer:10
+  - skill{s=hwm_health_vfx} @self ~onTimer:5
+  - skill{s=hwm_idle_sfx} ~onTimer:60 0.09
+  - skill{s=hwm_hit_sfx} ~onDamaged
+  - skill{s=hwm_attack_sfx} ~onAttack
+  - skill{s=hwm_flower} @self ~onInteract 0.005 =101%-75%
+  - skill{s=hwm_levelup} @self ~onAttack
+  - skill{s=hwm_level_10_debug} @self ~onInteract
+  - skill{s=hwm_slot4_engine} @self ~onTimer:10
+#
+  - skill{s=hwm_lvl_damage} @target ~onAttack
+  - skill{s=hwm_base_ignite} ~onAttack =20%-0%
+  - skill{s=hwm_random_ignite} ~onAttack =100%-21%
+  - skill{s=hwm_fullheal} @self ~onInteract =99%-0%
+#
+  - skill{s=hwm_ff_toggle_1_9} @self ~onDamaged
+  - skill{s=hwm_ff_toggle_2_9} @self ~onInteract
+  - skill{s=hwm_ff_toggle_3b_9} @self ~onInteract
+  - skill{s=hwm_ff_toggle_3b_9} @self ~onDamaged
+  - skill{s=hwm_ff_toggle_1_10} @self ~onDamaged
+  - skill{s=hwm_ff_toggle_2_10} @self ~onInteract
+  - skill{s=hwm_ff_toggle_3b_10} @self ~onInteract
+  - skill{s=hwm_ff_toggle_3b_10} @self ~onDamaged
+  - skill{s=hwm_forcefield} @MobsInRadius{radius=6;types=Zombie,Skeleton,Creeper,Wither_Skeleton,Pig_Zombie,Enderman} ~onTimer:5
+  - skill{s=hwm_anni_toggle} @self ~onDamaged
+  - skill{s=hwm_anni_engine} @MobsInRadius{radius=15;types=hwm_annistand,Zombie,Skeleton,Creeper,Wither_Skeleton,Pig_Zombie,Enderman,Spider,Baby_Zombie} ~onTimer:5
+#  - skill{s=hwm_wolf_detector} ~onTimer:5
+hwm_annistand:
+  Type: ARMOR_STAND
+  Options:
+    HasGravity: true
+    Invisible: true
+    PreventOtherDrops: true
+  Skills:
+  - effect:particles{p=flame;a=10;v=1;y=1} @self ~onTimer:5
+  - effect:particles{p=lava;a=1;v=1;y=1} @self ~onTimer:5
+  - remove{delay=45} @self ~onSpawn

@@ -1,0 +1,15 @@
+bc:
+  Type: COW
+  Health: 2000
+  Options:
+    Silent: true
+    KnockbackResistance: 1
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - disguise{d=block:command_block} @self ~onSpawn 1
+  - skill{s=bouncycastle1} ~onTimer:5 1
+  - effect:particles{particle=mobSpell;amount=5;vSpread=0.25;hSpread=0.25;Speed=0.49;yoffset=0.5} @self ~onTimer:5 0.95
+  - skill{s=particlebox} ~onTimer:5 1

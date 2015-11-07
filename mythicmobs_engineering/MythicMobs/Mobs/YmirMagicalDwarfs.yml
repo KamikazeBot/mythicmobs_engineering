@@ -1,0 +1,35 @@
+mdwa:
+  Type: skeleton
+  Display: '&7&oDwarven Blacksmith'
+  Health: 60
+  Damage: 1
+  Options:
+    PreventOtherDrops: true
+    MovementSpeed: 0.275
+    FollowRange: 100
+    Despawn: false
+  AIGoalSelectors:
+  - 0 clear
+  - 1 MeleeAttack
+  - 2 Float
+  AITargetSelectors:
+  - 0 clear
+  - 1 players
+  Skills:
+  - setstance{stance=norage} ~onSpawn 1
+  - skill{s=ymdwaeq4} ~onSpawn 1
+  - skill{s=ymdwaeq3} ~onSpawn 1
+  - skill{s=ymdwaeq2} ~onSpawn 1
+  - skill{s=ymdwaeq1} ~onSpawn 1
+  - skill{s=ymdwaeq0} ~onSpawn 1
+  - skill{s=ydwaskin} ~onSpawn 1
+  - skill{s=wdwadam1} ~onDamaged 1
+  - skill{s=wdwadam2} ~onDamaged 1
+  - skill{s=wdwadeath} ~onDeath 1
+  - skill{s=wdwaragemode} ~onDamaged =50%-0% 1
+  - skill{s=mdwabuff} ~onTimer:60 0.9
+  - skill{s=mdwadebuff} ~onTimer:60 1
+  - effect:particles{particle=reddust;amount=25;vSpread=0.5;hSpread=0.5;Speed=0;yoffset=1} @self ~onTimer:20 =50%-0% 0.8
+  - effect:sound{sound=dig.stone;p=0} @selflocation ~onTimer:60 0.2
+  Drops:
+  - mdwaDrops

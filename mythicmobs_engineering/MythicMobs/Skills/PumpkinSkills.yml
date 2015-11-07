@@ -1,0 +1,45 @@
+fphead:
+  Skills:
+  - equip{i=jackolantern:4} 1
+  - equip{i=khloeHead:4} 0.05
+  - equip{i=frostyHead:4} 0.05
+  - equip{i=jaylawlHead:4} 0.05
+  - equip{i=sukkigoHead:4} 0.05
+  - equip{i=stegHead:4} 0.05
+  - equip{i=kamHead:4} 0.05
+  - equip{i=zapfHead:4} 0.05
+  - equip{i=annieHead:4} 0.05
+  - equip{i=seayHead:4} 0.05
+  - equip{i=nickHead:4} 0.05
+  - equip{i=benHead:4} 0.05
+  - equip{i=chixHead:4} 0.05
+  - equip{i=tetHead:4} 0.05
+  - equip{i=elleHead:4} 0.05
+  - equip{i=izzyHead:4} 0.05
+  - equip{i=deeHead:4} 0.05
+  - equip{i=olliHead:4} 0.05
+fpidlenoise:
+  Skills:
+  - effect:sound{s=mob.villager.haggle;v=1;p=0} @selflocation
+  - effect:sound{s=mob.guardian.idle;v=1;p=2} @selflocation
+shypdeath:
+  Skills:
+  - command{cmd="scoreboard players add $player cc 1"} @trigger
+  - command{cmd="tellraw @a <&lc>text:<&dq>$player has found some candy!<&dq>,color:gold<&rc>"} @trigger
+  - throw{v=3;vy=5} @PlayersInRadius{r=5}
+  - remove{m=shypm} @MobsInRadius{radius=5;types=shypm}
+  - remove{m=fpm} @MobsInRadius{radius=5;types=fpm}
+  - effect:particles{particle=explode;amount=20;vSpread=0.3;hSpread=0.3;Speed=0.1;yoffset=1} @self
+  - effect:particles{particle=snowshovel;amount=20;vSpread=0.3;hSpread=0.3;Speed=0.1;yoffset=1} @self
+  - effect:particles{particle=mobSpell;amount=100;vSpread=0.1;hSpread=1.3;Speed=0.5;yoffset=0} @self
+  - effect:sound{s=random.explode;p=1.5} @selflocation
+  - effect:sound{s=random.orb;v=0.2;p=0} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=0.66} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=1} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=0.33} @selflocation 0.6
+  - delay 10
+  - effect:sound{s=random.orb;v=0.2;p=1.5} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=2} @selflocation 0.3
+  - delay 5
+  - effect:sound{s=random.orb;v=0.2;p=0.9} @selflocation 0.6
+  - effect:sound{s=random.orb;v=0.2;p=0.25} @selflocation 0.6

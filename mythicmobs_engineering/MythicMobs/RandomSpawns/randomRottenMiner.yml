@@ -1,0 +1,10 @@
+RandomMinorSkeleton1:
+  MobType: rotmin
+  Worlds: world
+  Chance: 0.0178
+  Priority: 2
+  Action: replace
+  Conditions:
+  - inblock air
+  - outside false
+  - height 0-48

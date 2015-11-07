@@ -1,0 +1,22 @@
+# Rotten Miner Skills
+spawnsilverfish:
+  Skills:
+  - potion{type=SLOW;d=40;l=5} @self
+  - effect:sound{sound=mob.zombie.unfect;p=0} @selflocation
+  - delay 30
+  - summon{m=SILVERFISH;a=1;r=3} @Self
+  - summon{m=SILVERFISH;a=1;r=3} @Self
+  - summon{m=SILVERFISH;a=1;r=3} @Self
+  - rally{r=10;types=SILVERFISH} @Self
+  - potion{type=SPEED;d=20;l=3} @self
+  - effect:smoke{d=20} @Self
+  - effect:particles{particle=spell;amount=25;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self
+  - effect:sound{sound=mob.zombie.say;p=0} @selflocation
+  - delay 20
+  - effect:sound{sound=mob.zombie.say;p=0} @selflocation
+fatinfect:
+  Cooldown: 7
+  Skills:
+  - potion{type=SLOW_DIGGING;d=1200;l=2} @Target
+  - effect:particles{particle=spell;amount=50;vSpread=0.5;hSpread=1;Speed=0.1;yoffset=1} @self
+  - effect:sound{sound=mob.zombie.remedy;p=0} @selflocation

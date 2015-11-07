@@ -1,0 +1,18 @@
+hedum3:
+  Type: COW
+  Options:
+    Silent: true
+    PreventOtherDrops: true
+    Despawn: true
+    MovementSpeed: 0.2
+    FollowRange: 30
+  Health: 2000
+  Damage: 0
+  AIGoalSelectors:
+  - 0 clear
+  AITargetSelectors:
+  - 0 clear
+  Skills:
+  - potion{type=INVISIBILITY;d=9999999;l=1} @self ~onSpawn 1 
+  - pull{v=4} @LivingInRadius{r=20} ~onTimer:5 1
+  - skill{s=removeself} ~onSpawn 1

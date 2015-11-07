@@ -1,0 +1,75 @@
+###############################################
+# Drops
+ymirmind:
+  Id: diamond_helmet
+  Data: 214
+  Display: '&3&oYmirs Mind'
+  Lore:
+  - ''
+  - '&1&o...but of his brain,'
+  - '&1&othe heavy clouds are all created...'
+  Enchantments:
+  - DURABILITY:4
+ymirskull:
+  Id: 278
+  Data: 203
+  Display: '&3&oYmirs Skull'
+  Lore:
+  - ''
+  - '&1&o...the heaven from the skull,'
+  - '&1&oof that ice cold giant....'
+  Options:
+    MovementSpeed: 0.15
+  Enchantments:
+  - LOOT_BONUS_BLOCKS:5
+  - DAMAGE_ALL:5
+  - DIG_SPEED:3
+  - KNOCKBACK:3
+  - DURABILITY:2
+ymirbones:
+  Id: diamond_chestplate
+  Data: 153
+  Display: '&3&oYmirs Bones'
+  Lore:
+  - ''
+  - '&1&oForged with the essence of Ymirs'
+  - '&1&obones. Increases ones greed.'
+  Options:
+    KnockbackResistance: 0.07
+  Enchantments:
+  - PROTECTION_ENVIRONMENTAL:5
+  - LOOT_BONUS_MOBS:2
+  - DAMAGE_ALL:1
+###############################################
+# Cosmetic / combat
+dullSkull:
+  Id: 278
+  Options:
+    Unbreakable: true
+  Enchantments:
+  - DURABILITY:1
+YmirHelmet:
+  Id: 310
+  Options:
+    Unbreakable: true
+  Enchantments:
+  - PROTECTION_ENVIRONMENTAL:5
+YmirChestplate:
+  Id: 311
+  Options:
+    Unbreakable: true
+  Enchantments:
+  - PROTECTION_ENVIRONMENTAL:5
+YmirPants:
+  Id: 312
+  Options:
+    Unbreakable: true
+  Enchantments:
+  - PROTECTION_ENVIRONMENTAL:5
+YmirShoes:
+  Id: 313
+  Options:
+    Unbreakable: true
+  Enchantments:
+  - PROTECTION_ENVIRONMENTAL:5
+###############################################
